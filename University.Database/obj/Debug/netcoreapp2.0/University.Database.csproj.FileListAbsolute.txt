@@ -1,0 +1,11 @@
+E:\Projects\Coursework\Backend\University\University.Database\bin\Debug\netcoreapp2.0\University.Database.deps.json
+E:\Projects\Coursework\Backend\University\University.Database\bin\Debug\netcoreapp2.0\University.Database.runtimeconfig.json
+E:\Projects\Coursework\Backend\University\University.Database\bin\Debug\netcoreapp2.0\University.Database.runtimeconfig.dev.json
+E:\Projects\Coursework\Backend\University\University.Database\bin\Debug\netcoreapp2.0\University.Database.dll
+E:\Projects\Coursework\Backend\University\University.Database\bin\Debug\netcoreapp2.0\University.Database.pdb
+E:\Projects\Coursework\Backend\University\University.Database\obj\Debug\netcoreapp2.0\University.Database.csprojAssemblyReference.cache
+E:\Projects\Coursework\Backend\University\University.Database\obj\Debug\netcoreapp2.0\University.Database.AssemblyInfoInputs.cache
+E:\Projects\Coursework\Backend\University\University.Database\obj\Debug\netcoreapp2.0\University.Database.AssemblyInfo.cs
+E:\Projects\Coursework\Backend\University\University.Database\obj\Debug\netcoreapp2.0\University.Database.dll
+E:\Projects\Coursework\Backend\University\University.Database\obj\Debug\netcoreapp2.0\University.Database.pdb
+E:\Projects\Coursework\Backend\University\University.Database\obj\Debug\netcoreapp2.0\University.Database.csproj.CoreCompileInputs.cache

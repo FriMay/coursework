@@ -1,0 +1,58 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "E:\\Projects\\Coursework\\Backend\\University\\University.Types\\University.Types.csproj",
+    "projectName": "University.Types",
+    "projectPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Types\\University.Types.csproj",
+    "outputPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Types\\obj\\",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netcoreapp2.0"
+    ],
+    "sources": {
+      "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+      "https://api.nuget.org/v3/index.json": {}
+    },
+    "frameworks": {
+      "netcoreapp2.0": {
+        "projectReferences": {
+          "E:\\Projects\\Coursework\\Backend\\University\\University.DataAccess\\University.DataAccess.csproj": {
+            "projectPath": "E:\\Projects\\Coursework\\Backend\\University\\University.DataAccess\\University.DataAccess.csproj"
+          },
+          "E:\\Projects\\Coursework\\Backend\\University\\University.Database\\University.Database.csproj": {
+            "projectPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Database\\University.Database.csproj"
+          }
+        }
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp2.0": {
+      "dependencies": {
+        "GraphQL": {
+          "target": "Package",
+          "version": "[2.0.0, )"
+        },
+        "Microsoft.NETCore.App": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.0.0, )",
+          "autoReferenced": true
+        }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}

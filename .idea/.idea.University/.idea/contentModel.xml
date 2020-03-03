@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\frima\.Rider2019.3\config\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\frima\.Rider2019.3\config\scratches" t="IncludeRecursive" />
+    <e p="C:\Users\frima\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\frima\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_University.1379824249.00" t="ExcludeRecursive" />
+    <e p="E:\Projects\Coursework\Backend\University" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="University.Api" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controllers" t="Include">
+          <e p="GraphQLController.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="University.Api.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Queries" t="Include">
+          <e p="MarkQuery.cs" t="Include" />
+        </e>
+        <e p="Schema" t="Include">
+          <e p="UniversitySchema.cs" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="University.Api.csproj" t="IncludeRecursive" />
+        <e p="wwwroot" t="Include" />
+      </e>
+      <e p="University.DataAccess" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Facades" t="Include">
+          <e p="AbstractFacade.cs" t="Include" />
+          <e p="GroupFacade.cs" t="Include" />
+          <e p="GroupSubjectFacade.cs" t="Include" />
+          <e p="MarkFacade.cs" t="Include" />
+          <e p="NotificationFacade.cs" t="Include" />
+          <e p="NotificationStudentFacade.cs" t="Include" />
+          <e p="SubjectFacade.cs" t="Include" />
+          <e p="UserFacade.cs" t="Include" />
+          <e p="UserGroupFacade.cs" t="Include" />
+          <e p="UserMarkFacade.cs" t="Include" />
+          <e p="UserRoleFacade.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="University.DataAccess.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="University.DataAccess.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="University.Database" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Migrations" t="Include">
+          <e p="20200302064906_Initial.cs" t="Include" />
+          <e p="20200302064906_Initial.Designer.cs" t="Include" />
+          <e p="UniversityContextModelSnapshot.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="Group.cs" t="Include" />
+          <e p="GroupSubject.cs" t="Include" />
+          <e p="Mark.cs" t="Include" />
+          <e p="Notification.cs" t="Include" />
+          <e p="NotificationStudent.cs" t="Include" />
+          <e p="Subject.cs" t="Include" />
+          <e p="User.cs" t="Include" />
+          <e p="UserGroup.cs" t="Include" />
+          <e p="UserMark.cs" t="Include" />
+          <e p="UserRole.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="University.Database.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="University.Database.csproj" t="IncludeRecursive" />
+        <e p="UniversityContext.cs" t="Include" />
+        <e p="UniversityContextFactory.cs" t="Include" />
+        <e p="UniversitySeedData.cs" t="Include" />
+      </e>
+      <e p="University.sln" t="IncludeFlat" />
+      <e p="University.Types" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Group" t="Include">
+          <e p="GroupType.cs" t="Include" />
+        </e>
+        <e p="GroupSubject" t="Include">
+          <e p="GroupSubjectType.cs" t="Include" />
+        </e>
+        <e p="Mark" t="Include">
+          <e p="MarkType.cs" t="Include" />
+        </e>
+        <e p="Notification" t="Include">
+          <e p="NotificationType.cs" t="Include" />
+        </e>
+        <e p="NotificationStudent" t="Include">
+          <e p="NotificationStudentType.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="University.Types.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Subject" t="Include">
+          <e p="SubjectType.cs" t="Include" />
+        </e>
+        <e p="University.Types.csproj" t="IncludeRecursive" />
+        <e p="User" t="Include">
+          <e p="UserType.cs" t="Include" />
+        </e>
+        <e p="UserGroup" t="Include">
+          <e p="UserGroupType.cs" t="Include" />
+        </e>
+        <e p="UserMark" t="Include">
+          <e p="UserMarkType.cs" t="Include" />
+        </e>
+        <e p="UserRole" t="Include">
+          <e p="UserRoleType.cs" t="Include" />
+        </e>
+      </e>
+      <e p="University.Utilities" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="GraphQLQuery.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="University.Utilities.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="University.Utilities.csproj" t="IncludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>

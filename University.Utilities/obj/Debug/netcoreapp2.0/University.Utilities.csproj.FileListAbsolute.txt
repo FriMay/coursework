@@ -1,0 +1,9 @@
+E:\Projects\Coursework\Backend\University\University.Utilities\bin\Debug\netcoreapp2.0\University.Utilities.deps.json
+E:\Projects\Coursework\Backend\University\University.Utilities\bin\Debug\netcoreapp2.0\University.Utilities.dll
+E:\Projects\Coursework\Backend\University\University.Utilities\bin\Debug\netcoreapp2.0\University.Utilities.pdb
+E:\Projects\Coursework\Backend\University\University.Utilities\obj\Debug\netcoreapp2.0\University.Utilities.csprojAssemblyReference.cache
+E:\Projects\Coursework\Backend\University\University.Utilities\obj\Debug\netcoreapp2.0\University.Utilities.csproj.CoreCompileInputs.cache
+E:\Projects\Coursework\Backend\University\University.Utilities\obj\Debug\netcoreapp2.0\University.Utilities.AssemblyInfoInputs.cache
+E:\Projects\Coursework\Backend\University\University.Utilities\obj\Debug\netcoreapp2.0\University.Utilities.AssemblyInfo.cs
+E:\Projects\Coursework\Backend\University\University.Utilities\obj\Debug\netcoreapp2.0\University.Utilities.dll
+E:\Projects\Coursework\Backend\University\University.Utilities\obj\Debug\netcoreapp2.0\University.Utilities.pdb

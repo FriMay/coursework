@@ -1,0 +1,14 @@
+E:\Projects\Coursework\Backend\University\University.Types\bin\Debug\netcoreapp2.0\University.Types.deps.json
+E:\Projects\Coursework\Backend\University\University.Types\bin\Debug\netcoreapp2.0\University.Types.dll
+E:\Projects\Coursework\Backend\University\University.Types\bin\Debug\netcoreapp2.0\University.Types.pdb
+E:\Projects\Coursework\Backend\University\University.Types\bin\Debug\netcoreapp2.0\University.Database.dll
+E:\Projects\Coursework\Backend\University\University.Types\bin\Debug\netcoreapp2.0\University.Database.pdb
+E:\Projects\Coursework\Backend\University\University.Types\obj\Debug\netcoreapp2.0\University.Types.csprojAssemblyReference.cache
+E:\Projects\Coursework\Backend\University\University.Types\obj\Debug\netcoreapp2.0\University.Types.csproj.CoreCompileInputs.cache
+E:\Projects\Coursework\Backend\University\University.Types\obj\Debug\netcoreapp2.0\University.Types.AssemblyInfoInputs.cache
+E:\Projects\Coursework\Backend\University\University.Types\obj\Debug\netcoreapp2.0\University.Types.AssemblyInfo.cs
+E:\Projects\Coursework\Backend\University\University.Types\obj\Debug\netcoreapp2.0\University.Types.csproj.CopyComplete
+E:\Projects\Coursework\Backend\University\University.Types\obj\Debug\netcoreapp2.0\University.Types.dll
+E:\Projects\Coursework\Backend\University\University.Types\obj\Debug\netcoreapp2.0\University.Types.pdb
+E:\Projects\Coursework\Backend\University\University.Types\bin\Debug\netcoreapp2.0\University.DataAccess.dll
+E:\Projects\Coursework\Backend\University\University.Types\bin\Debug\netcoreapp2.0\University.DataAccess.pdb
