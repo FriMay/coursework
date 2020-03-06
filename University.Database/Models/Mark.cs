@@ -7,7 +7,7 @@
         public int Id { get; set; }
 
         public string MarkValue { get; set; }
-
+        
         public ICollection<UserMark> UserMarks { get; set; }
 
     }

@@ -18,7 +18,7 @@ namespace University.Types.User {
             Field(x => x.FirstName);
             Field(x => x.LastName);
             Field(x => x.SecondName);
-            Field<ListGraphType<GroupType>>("groupSubjects",
+            Field<ListGraphType<GroupType>>("group",
                 resolve: context => userGroupFacade.GetByUserId(context.Source.Id));
             Field<ListGraphType<UserMarkType>>("userMarks",
                 resolve: context => userMarkFacade.GetByUserId(context.Source.Id)
