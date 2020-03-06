@@ -51,7 +51,7 @@ namespace University {
         }
         
         public void AddSingletonQueries(ref IServiceCollection services) {
-            services.AddSingleton<MarkQuery>();
+            services.AddSingleton<Queries.Queries>();
             
         }
         

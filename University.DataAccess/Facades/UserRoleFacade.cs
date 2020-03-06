@@ -13,6 +13,10 @@ namespace University.DataAccess.Facades {
             return GetContext.UserRoles;
         }
 
+        public UserRole GetById(int id) {
+            return GetContext.UserRoles.Find(id);
+        }
+
     }
 
 }

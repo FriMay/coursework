@@ -26,7 +26,7 @@
           <e p="launchSettings.json" t="Include" />
         </e>
         <e p="Queries" t="Include">
-          <e p="MarkQuery.cs" t="Include" />
+          <e p="Queries.cs" t="Include" />
         </e>
         <e p="Schema" t="Include">
           <e p="UniversitySchema.cs" t="Include" />

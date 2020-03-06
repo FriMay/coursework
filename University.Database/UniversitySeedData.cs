@@ -31,8 +31,35 @@ namespace University.Database {
                         MarkValue = "5"
                     }
                 };
-                
+                var userRoles = new List<UserRole> {
+                    new UserRole() {
+                        RoleName = "Teacher"
+                    },
+                    new UserRole() {
+                        RoleName = "Student"
+                    },
+                    new UserRole() {
+                        RoleName = "Curator"
+                    }
+                };
+                var groups = new List<Group> {
+                    new Group {Name = "18VP1"}
+                };
+                var subjects = new List<Subject> {
+                    new Subject() {
+                        SubjectName = "Geometry"
+                    },
+                    new Subject() {
+                        SubjectName = "Programming"
+                    },
+                    new Subject() {
+                        SubjectName = "English language"
+                    }
+                };
                 db.Marks.AddRange(marks);
+                db.UserRoles.AddRange(userRoles);
+                db.Groups.AddRange(groups);
+                db.Subjects.AddRange(subjects);
                 db.SaveChanges();
             }
         }

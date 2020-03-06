@@ -12,8 +12,7 @@ namespace University.Types.Mark {
             Field<ListGraphType<UserMarkType>>(
                 "userMarks",
                 resolve: context => userMarkFacade.GetByMarkId(context.Source.Id));
-
-            // Field(x => x.UserMarks);
+            
         }
 
     }

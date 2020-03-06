@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using University.Database;
+﻿﻿using System.Collections.Generic;
+ using System.Linq;
+ using University.Database;
 using University.Database.Models;
 
 namespace University.DataAccess.Facades {
@@ -11,6 +12,25 @@ namespace University.DataAccess.Facades {
 
         public override IEnumerable<UserGroup> GetAll() {
             return GetContext.UserGroups;
+        }
+
+        public IEnumerable<UserGroup> GetByGroupId(int sourceId) {
+            return GetContext.UserGroups.Where(x=> x.Group.Id==sourceId);
+        }
+
+        public IEnumerable<Group> GetByUserId(int sourceId) {
+
+            IEnumerable<Group> groups = new List<Group>();
+            
+            foreach (var gGroup in GetContext.UserGroups.Where(x=> x.User.Id==sourceId)) {
+                groups.Append(gGroup.Group);
+            }
+
+            return groups;
+        }
+
+        public UserGroup GetById(int id) {
+            return GetContext.UserGroups.Find(id);
         }
 
     }

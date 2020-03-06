@@ -9,7 +9,7 @@ namespace University.Schema {
 
         public UniversitySchema(IDependencyResolver resolver)
             : base(resolver) {
-            Query = resolver.Resolve<MarkQuery>();
+            Query = resolver.Resolve<Queries.Queries>();
         }
 
     }
