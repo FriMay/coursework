@@ -10,7 +10,9 @@ namespace University.Types.Group {
 
         public GroupType(NotificationFacade notificationFacade, UserGroupFacade userGroupFacade, GroupSubjectFacade groupSubjectFacade) {
             Field(x => x.Id);
-            Field(x => x.Name);
+            Field<StringGraphType>("name"
+                ,
+                resolve:context=> context.Source.Name);
             Field<ListGraphType<NotificationType>>(
                 "notifications",
                 resolve: context => notificationFacade.GetByGroupId(context.Source.Id));

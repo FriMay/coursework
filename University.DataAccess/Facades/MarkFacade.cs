@@ -13,7 +13,10 @@ namespace University.DataAccess.Facades {
             return GetContext.Marks;
         }
 
-        public Mark GetById(int id) {
+        public Mark GetById(int? id) {
+            if (id == null) {
+                return null;
+            }
             return GetContext.Marks.Find(id);
         }
 

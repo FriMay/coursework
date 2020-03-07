@@ -13,7 +13,10 @@ namespace University.DataAccess.Facades {
             return GetContext.Subjects;
         }
 
-        public Subject GetById(int id) {
+        public Subject GetById(int? id) {
+            if (id == null) {
+                return null;
+            }
             return GetContext.Subjects.Find(id);
         }
 

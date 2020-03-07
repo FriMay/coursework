@@ -18,7 +18,10 @@ namespace University.DataAccess.Facades {
             return GetContext.Users.Where(x=> x.UserRole.Id==sourceId);
         }
 
-        public User GetById(int id) {
+        public User GetById(int? id) {
+            if (id == null) {
+                return null;
+            }
             return GetContext.Users.Find(id);
         }
 

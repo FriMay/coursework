@@ -1,4 +1,5 @@
-﻿﻿﻿using System.Collections.Generic;
+﻿﻿﻿using System;
+  using System.Collections.Generic;
 
   namespace University.Database.Models {
 
@@ -6,7 +7,9 @@
 
         public int Id { get; set; }
 
-        public string Message { get; set; }
+        public String Message { get; set; }
+        
+        public int? GroupId { get; set; }
 
         public Group Group { get; set; }
 

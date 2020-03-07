@@ -1,4 +1,5 @@
-﻿﻿﻿using System.Collections.Generic;
+﻿﻿﻿using System;
+  using System.Collections.Generic;
 
   namespace University.Database.Models {
 
@@ -6,7 +7,7 @@
 
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public String Name { get; set; }
 
         public ICollection<GroupSubject> GroupSubjects { get; set; }
 

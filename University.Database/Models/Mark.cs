@@ -1,4 +1,5 @@
-﻿﻿﻿﻿using System.Collections.Generic;
+﻿﻿﻿﻿using System;
+   using System.Collections.Generic;
 
    namespace University.Database.Models {
 
@@ -6,7 +7,7 @@
 
         public int Id { get; set; }
 
-        public string MarkValue { get; set; }
+        public String MarkValue { get; set; }
         
         public ICollection<UserMark> UserMarks { get; set; }
 

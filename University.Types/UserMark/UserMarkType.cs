@@ -8,20 +8,20 @@ namespace University.Types.UserMark {
 
     public class UserMarkType: ObjectGraphType<Database.Models.UserMark> {
 
-        public UserMarkType() {
+        public UserMarkType(GroupSubjectFacade groupSubjectFacade, UserFacade userFacade, MarkFacade markFacade) {
             Field(x => x.Id);
             Field(x => x.IssueData);
 
             Field<GroupSubjectType>("groupSubject",
-                resolve: context => context.Source.GroupSubject
+                resolve: context => groupSubjectFacade.GetById(context.Source.GroupSubjectId) 
             );
             
             Field<UserType>("user",
-                resolve: context => context.Source.Student
+                resolve: context => userFacade.GetById(context.Source.StudentId) 
             );
             
             Field<MarkType>("mark",
-                resolve: context => context.Source.Mark
+                resolve: context => markFacade.GetById(context.Source.MarkId) 
             );
         }
 

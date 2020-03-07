@@ -8,7 +8,9 @@ namespace University.Types.Subject {
 
         public SubjectType(GroupSubjectFacade groupSubjectFacade) {
             Field(x => x.Id);
-            Field(x => x.SubjectName);
+            Field<StringGraphType>("subjectName"
+                ,
+                resolve:context=> context.Source.SubjectName);
             Field<ListGraphType<GroupSubjectType>>("groupSubjects",
                 resolve: context => groupSubjectFacade.GetBySubjectId(context.Source.Id)
             );

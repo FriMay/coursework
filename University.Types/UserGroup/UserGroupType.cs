@@ -1,4 +1,5 @@
 ﻿using GraphQL.Types;
+using University.DataAccess.Facades;
 using University.Types.Group;
 using University.Types.User;
 
@@ -6,13 +7,13 @@ namespace University.Types.UserGroup {
 
     public class UserGroupType: ObjectGraphType<Database.Models.UserGroup> {
 
-        public UserGroupType() {
+        public UserGroupType(GroupFacade groupFacade, UserFacade userFacade) {
             Field(x => x.Id);
             Field<GroupType>("group",
-                resolve: context => context.Source.Group
+                resolve: context => groupFacade.GetById(context.Source.GroupId) 
             );
             Field<UserType>("user",
-                resolve: context => context.Source.User
+                resolve: context => userFacade.GetById(context.Source.UserId) 
             );
         }
 

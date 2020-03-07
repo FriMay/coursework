@@ -8,7 +8,9 @@ namespace University.Types.Mark {
 
         public MarkType(UserMarkFacade userMarkFacade) {
             Field(x => x.Id);
-            Field(x => x.MarkValue);
+            Field<StringGraphType>("markValue"
+                ,
+                resolve:context=> context.Source.MarkValue);
             Field<ListGraphType<UserMarkType>>(
                 "userMarks",
                 resolve: context => userMarkFacade.GetByMarkId(context.Source.Id));

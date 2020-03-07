@@ -18,7 +18,10 @@ namespace University.DataAccess.Facades {
             return GetContext.Notifications.Where(x=> x.Group.Id==sourceId);
         }
 
-        public Notification GetById(int id) {
+        public Notification GetById(int? id) {
+            if (id == null) {
+                return null;
+            }
             return GetContext.Notifications.Find(id);
         }
 

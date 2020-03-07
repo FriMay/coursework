@@ -14,7 +14,10 @@ namespace University.DataAccess.Facades {
             return GetContext.Groups;
         }
 
-        public Group GetById(int id) {
+        public Group GetById(int? id) {
+            if (id == null) {
+                return null;
+            }
             return GetContext.Groups.Find(id);
         }
 

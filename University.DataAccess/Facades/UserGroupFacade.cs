@@ -18,13 +18,13 @@ namespace University.DataAccess.Facades {
             return GetContext.UserGroups.Where(x=> x.Group.Id==sourceId);
         }
 
-        public IEnumerable<Group> GetByUserId(int sourceId) {
+        public IEnumerable<Group> GetByUserId(int sourceId, GroupFacade groupFacade) {
 
-            IEnumerable<Group> groups = new List<Group>();
+            List<Group> groups = new List<Group>();
             
-            foreach (var gGroup in GetContext.UserGroups.Where(x=> x.User.Id==sourceId)) {
-                groups.Append(gGroup.Group);
-            }
+            foreach (var gGroup in GetContext.UserGroups.Where(x=> x.User.Id==sourceId)) 
+                groups.Add(groupFacade.GetById(gGroup.GroupId));
+            
 
             return groups;
         }

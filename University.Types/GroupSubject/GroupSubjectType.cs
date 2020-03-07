@@ -7,26 +7,31 @@ using University.Types.UserMark;
 
 namespace University.Types.GroupSubject {
 
-    public class GroupSubjectType: ObjectGraphType<Database.Models.GroupSubject> {
+    public class GroupSubjectType : ObjectGraphType<Database.Models.GroupSubject> {
 
-        public GroupSubjectType(UserMarkFacade userMarkFacade) {
+        public GroupSubjectType(UserMarkFacade userMarkFacade, SubjectFacade subjectFacade, UserFacade userFacade,
+            GroupFacade groupFacade) {
             Field(x => x.Id);
-            Field(x => x.OrderNumber);
-            Field(x => x.DayOfWeek);
+            Field<IntGraphType>(
+                "orderNumber",
+                resolve: context => context.Source.OrderNumber);
+            Field<IntGraphType>(
+                "dayOfWeek",
+                resolve: context => context.Source.DayOfWeek);
             Field<ListGraphType<UserMarkType>>(
                 "userMarks",
                 resolve: context => userMarkFacade.GetByGroupSubjectId(context.Source.Id));
-            
+
             Field<SubjectType>("subject",
-                resolve: context => context.Source.Subject
+                resolve: context => subjectFacade.GetById(context.Source.SubjectId)
             );
-            
+
             Field<UserType>("teacher",
-                resolve: context => context.Source.Teacher
+                resolve: context => userFacade.GetById(context.Source.TeacherId)
             );
-            
+
             Field<GroupType>("group",
-                resolve: context => context.Source.Group
+                resolve: context => groupFacade.GetById(context.Source.GroupId)
             );
         }
 

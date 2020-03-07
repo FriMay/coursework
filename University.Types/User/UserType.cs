@@ -11,21 +11,28 @@ namespace University.Types.User {
 
     public class UserType : ObjectGraphType<Database.Models.User> {
 
-        public UserType(UserGroupFacade userGroupFacade, UserMarkFacade userMarkFacade) {
+        public UserType(UserGroupFacade userGroupFacade, UserMarkFacade userMarkFacade, UserRoleFacade userRoleFacade,
+            GroupFacade groupFacade) {
             Field(x => x.Id);
-            Field(x => x.Login);
-            Field(x => x.Password);
-            Field(x => x.FirstName);
-            Field(x => x.LastName);
-            Field(x => x.SecondName);
+            Field<StringGraphType>("login",
+                resolve: context => context.Source.Login);
+            Field<StringGraphType>("password",
+                resolve: context => context.Source.Password);
+            Field<StringGraphType>("firstName",
+                resolve: context => context.Source.FirstName);
+            Field<StringGraphType>("lastName",
+                resolve: context => context.Source.LastName);
+            Field<StringGraphType>("secondName",
+                resolve: context => context.Source.SecondName);
             Field<ListGraphType<GroupType>>("group",
-                resolve: context => userGroupFacade.GetByUserId(context.Source.Id));
+                resolve: context => userGroupFacade.GetByUserId(context.Source.Id, groupFacade)
+            );
             Field<ListGraphType<UserMarkType>>("userMarks",
                 resolve: context => userMarkFacade.GetByUserId(context.Source.Id)
             );
             Field<UserRoleType>(
                 "userRole",
-                resolve: context => context.Source.UserRole
+                resolve: context => userRoleFacade.GetById(context.Source.UserRoleId)
             );
         }
 

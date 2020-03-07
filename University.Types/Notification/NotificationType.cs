@@ -7,11 +7,13 @@ namespace University.Types.Notification {
 
     public class NotificationType: ObjectGraphType<Database.Models.Notification> {
 
-        public NotificationType(NotificationStudentFacade notificationStudentFacade) {
+        public NotificationType(NotificationStudentFacade notificationStudentFacade, GroupFacade groupFacade) {
             Field(x => x.Id);
-            Field(x => x.Message);
+            Field<StringGraphType>("message"
+                ,
+                resolve:context=> context.Source.Message);
             Field<GroupType>("group",
-                resolve: context => context.Source.Group
+                resolve: context => groupFacade.GetById(context.Source.GroupId) 
             );
             
             Field<ListGraphType<NotificationStudentType>>(
