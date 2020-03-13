@@ -30,6 +30,9 @@ namespace University.Types.User {
             Field<ListGraphType<UserMarkType>>("userMarks",
                 resolve: context => userMarkFacade.GetByUserId(context.Source.Id)
             );
+            Field<UserMarkType>("userMark",
+                arguments: new QueryArguments(new QueryArgument<IntGraphType> {Name = "id"}),
+                resolve: context => userMarkFacade.GetById(context.GetArgument<int>("id")));
             Field<UserRoleType>(
                 "userRole",
                 resolve: context => userRoleFacade.GetById(context.Source.UserRoleId)

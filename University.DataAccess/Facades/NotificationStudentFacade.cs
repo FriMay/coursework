@@ -22,7 +22,7 @@ namespace University.DataAccess.Facades {
             return GetContext.NotificationStudents.Where(x => x.Student.Id==(sourceId));
         }
 
-        public NotificationStudent GetById(int id) {
+        public NotificationStudent GetById(int? id) {
             return GetContext.NotificationStudents.Find(id);
         }
 

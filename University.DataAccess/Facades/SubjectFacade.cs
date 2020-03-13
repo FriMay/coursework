@@ -14,9 +14,6 @@ namespace University.DataAccess.Facades {
         }
 
         public Subject GetById(int? id) {
-            if (id == null) {
-                return null;
-            }
             return GetContext.Subjects.Find(id);
         }
 

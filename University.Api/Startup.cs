@@ -49,12 +49,7 @@ namespace University {
             services.AddTransient<UserMarkFacade>();
             services.AddTransient<UserRoleFacade>();
         }
-        
-        public void AddSingletonQueries(ref IServiceCollection services) {
-            services.AddSingleton<Queries.Queries>();
-            
-        }
-        
+
         public void AddSingletonTypes(ref IServiceCollection services) {
             services.AddSingleton<GroupType>();
             services.AddSingleton<GroupSubjectType>();
@@ -66,6 +61,19 @@ namespace University {
             services.AddSingleton<UserGroupType>();
             services.AddSingleton<UserMarkType>();
             services.AddSingleton<UserRoleType>();
+        }
+        
+        public void AddSingletonInputTypes(ref IServiceCollection services) {
+            services.AddSingleton<GroupInputType>();
+            services.AddSingleton<GroupSubjectInputType>();
+            services.AddSingleton<MarkInputType>();
+            services.AddSingleton<NotificationInputType>();
+            services.AddSingleton<NotificationStudentInputType>();
+            services.AddSingleton<SubjectInputType>();
+            services.AddSingleton<UserInputType>();
+            services.AddSingleton<UserGroupInputType>();
+            services.AddSingleton<UserMarkInputType>();
+            services.AddSingleton<UserRoleInputType>();
         }
 
         public void AddSingletonSchemas(ref IServiceCollection services) {
@@ -83,16 +91,21 @@ namespace University {
             services.AddEntityFrameworkNpgsql()
                 .AddDbContext<UniversityContext>(options =>
                     options.UseNpgsql(Configuration.GetConnectionString("UniversityDb")));
-            
+
             AddTransients(ref services);
             
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
             
-            AddSingletonQueries(ref services);
+            services.AddSingleton<Queries.Queries>();
+            
+            services.AddSingleton<Mutations.Mutations>();
             
             AddSingletonTypes(ref services);
             
+            AddSingletonInputTypes(ref services);
+            
             AddSingletonSchemas(ref services);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

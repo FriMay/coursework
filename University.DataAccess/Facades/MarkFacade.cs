@@ -14,10 +14,14 @@ namespace University.DataAccess.Facades {
         }
 
         public Mark GetById(int? id) {
-            if (id == null) {
-                return null;
-            }
             return GetContext.Marks.Find(id);
+        }
+
+        public Mark Edit(int editMark, Mark editValues) {
+            Mark mark = GetById(editMark);
+            mark.MarkValue = editValues.MarkValue;
+            Update(mark);
+            return mark;
         }
 
     }

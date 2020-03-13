@@ -19,6 +19,10 @@ namespace University.Types.Notification {
             Field<ListGraphType<NotificationStudentType>>(
                 "notificationStudents",
                 resolve: context => notificationStudentFacade.GetByNotificationId(context.Source.Id));
+            
+            Field<NotificationStudentType>("notificationStudent",
+                arguments: new QueryArguments(new QueryArgument<IntGraphType> {Name = "id"}),
+                resolve: context => notificationStudentFacade.GetById(context.GetArgument<int>("id")));
 
         }
         

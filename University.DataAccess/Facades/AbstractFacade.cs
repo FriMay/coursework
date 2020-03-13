@@ -13,6 +13,23 @@ namespace University.DataAccess.Facades {
         
         public abstract IEnumerable<T> GetAll();
 
+        public T Add(T value) {
+            GetContext.Add(value);
+            GetContext.SaveChanges();
+            return value;
+        }
+
+        public void Update(T value) {
+            GetContext.Update(value);
+            GetContext.SaveChanges();
+        }
+
+        public T Delete(T value) {
+            GetContext.Remove(value);
+            GetContext.SaveChanges();
+            return value;
+        }
+
     }
 
 }

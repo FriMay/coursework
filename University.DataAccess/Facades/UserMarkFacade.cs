@@ -26,7 +26,7 @@ namespace University.DataAccess.Facades {
             return GetContext.UserMarks.Where(x => x.Student.Id==sourceId);
         }
 
-        public UserMark GetById(int id) {
+        public UserMark GetById(int? id) {
             return GetContext.UserMarks.Find(id);
         }
 

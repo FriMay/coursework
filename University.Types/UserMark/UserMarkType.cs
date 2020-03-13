@@ -15,7 +15,7 @@ namespace University.Types.UserMark {
             Field<GroupSubjectType>("groupSubject",
                 resolve: context => groupSubjectFacade.GetById(context.Source.GroupSubjectId) 
             );
-            
+
             Field<UserType>("user",
                 resolve: context => userFacade.GetById(context.Source.StudentId) 
             );

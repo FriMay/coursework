@@ -14,9 +14,6 @@ namespace University.DataAccess.Facades {
         }
 
         public UserRole GetById(int? id) {
-            if (id == null) {
-                return null;
-            }
             return GetContext.UserRoles.Find(id);
         }
 

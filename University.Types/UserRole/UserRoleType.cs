@@ -13,6 +13,10 @@ namespace University.Types.UserRole {
                 resolve:context=> context.Source.RoleName);
             Field<ListGraphType<UserType>>("users",
                 resolve: context => userFacade.GetByUserRoleId(context.Source.Id));
+            
+            Field<UserType>("user",
+                arguments: new QueryArguments(new QueryArgument<IntGraphType> {Name = "id"}),
+                resolve: context => userFacade.GetById(context.GetArgument<int>("id")));
         }
 
     }

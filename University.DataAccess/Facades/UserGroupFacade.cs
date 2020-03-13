@@ -29,7 +29,7 @@ namespace University.DataAccess.Facades {
             return groups;
         }
 
-        public UserGroup GetById(int id) {
+        public UserGroup GetById(int? id) {
             return GetContext.UserGroups.Find(id);
         }
 

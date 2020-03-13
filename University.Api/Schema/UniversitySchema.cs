@@ -10,6 +10,7 @@ namespace University.Schema {
         public UniversitySchema(IDependencyResolver resolver)
             : base(resolver) {
             Query = resolver.Resolve<Queries.Queries>();
+            Mutation = resolver.Resolve<Mutations.Mutations>();
         }
 
     }

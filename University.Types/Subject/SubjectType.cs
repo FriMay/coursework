@@ -14,6 +14,10 @@ namespace University.Types.Subject {
             Field<ListGraphType<GroupSubjectType>>("groupSubjects",
                 resolve: context => groupSubjectFacade.GetBySubjectId(context.Source.Id)
             );
+            
+            Field<GroupSubjectType>("groupSubject",
+                arguments: new QueryArguments(new QueryArgument<IntGraphType> {Name = "id"}),
+                resolve: context => groupSubjectFacade.GetById(context.GetArgument<int>("id")));
         }
         
 

@@ -19,9 +19,6 @@ namespace University.DataAccess.Facades {
         }
 
         public User GetById(int? id) {
-            if (id == null) {
-                return null;
-            }
             return GetContext.Users.Find(id);
         }
 
