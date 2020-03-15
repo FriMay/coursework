@@ -1,4 +1,5 @@
-﻿using GraphQL.Types;
+﻿using System;
+using GraphQL.Types;
 using University.DataAccess.Facades;
 using University.Database.Models;
 using University.Types;
@@ -200,6 +201,20 @@ namespace University.Queries {
             AddUserMarkQueries(userMarkFacade);
 
             AddUserRoleQueries(userRoleFacade);
+
+            AddAuthorizeQueries(userFacade);
+        }
+
+        private void AddAuthorizeQueries(UserFacade userFacade) {
+            Field<UserType>("login",
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<StringGraphType>> {Name = "login"},
+                    new QueryArgument<NonNullGraphType<StringGraphType>> {Name = "password"}),
+                resolve: context => {
+                    var login = context.GetArgument<String>("login");
+                    var password = context.GetArgument<String>("password");
+                    return userFacade.Login(login, password);
+                }
+            );
         }
 
     }

@@ -14,6 +14,14 @@ namespace University.DataAccess.Facades {
             return GetContext.Notifications;
         }
 
+        public override Notification Edit(int id, Notification value) {
+            Notification notification = GetById(id);
+            notification.Group = value.Group ?? notification.Group;
+            notification.Message = value.Message ?? notification.Message;
+            
+            return Update(notification);
+        }
+
         public IEnumerable<Notification> GetByGroupId(int sourceId) {
             return GetContext.Notifications.Where(x=> x.Group.Id==sourceId);
         }

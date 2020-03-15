@@ -19,9 +19,10 @@ namespace University.DataAccess.Facades {
             return value;
         }
 
-        public void Update(T value) {
+        public T Update(T value) {
             GetContext.Update(value);
             GetContext.SaveChanges();
+            return value;
         }
 
         public T Delete(T value) {
@@ -29,6 +30,8 @@ namespace University.DataAccess.Facades {
             GetContext.SaveChanges();
             return value;
         }
+
+        public abstract T Edit(int id, T value);
 
     }
 

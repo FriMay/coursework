@@ -4,7 +4,7 @@ using University.Database.Models;
 
 namespace University.DataAccess.Facades {
 
-    public class MarkFacade: AbstractFacade<Mark> {
+    public class MarkFacade : AbstractFacade<Mark> {
 
         public MarkFacade(UniversityContext context)
             : base(context) { }
@@ -17,11 +17,10 @@ namespace University.DataAccess.Facades {
             return GetContext.Marks.Find(id);
         }
 
-        public Mark Edit(int editMark, Mark editValues) {
+        public override Mark Edit(int editMark, Mark editValues) {
             Mark mark = GetById(editMark);
-            mark.MarkValue = editValues.MarkValue;
-            Update(mark);
-            return mark;
+            mark.MarkValue = editValues.MarkValue ?? mark.MarkValue;
+            return Update(mark);
         }
 
     }

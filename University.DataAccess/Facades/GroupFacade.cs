@@ -14,6 +14,12 @@ namespace University.DataAccess.Facades {
             return GetContext.Groups;
         }
 
+        public override Group Edit(int id, Group value) {
+            Group group = GetById(id);
+            group.Name = value.Name ?? group.Name;
+            return Update(group);
+        }
+
         public Group GetById(int? id) {
             return GetContext.Groups.Find(id);
         }

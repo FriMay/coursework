@@ -88,12 +88,19 @@ namespace University {
         public void ConfigureServices(IServiceCollection services) {
             services.AddMvc();
             
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
+            
             services.AddEntityFrameworkNpgsql()
                 .AddDbContext<UniversityContext>(options =>
                     options.UseNpgsql(Configuration.GetConnectionString("UniversityDb")));
 
             AddTransients(ref services);
-            
+
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
             
             services.AddSingleton<Queries.Queries>();
@@ -114,6 +121,8 @@ namespace University {
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("MyPolicy");
+            
             app.UseGraphiQl();
 
             app.UseMvc();

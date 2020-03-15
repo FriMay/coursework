@@ -10,7 +10,10 @@ namespace University.Types.UserMark {
 
         public UserMarkType(GroupSubjectFacade groupSubjectFacade, UserFacade userFacade, MarkFacade markFacade) {
             Field(x => x.Id);
-            Field(x => x.IssueData);
+
+            Field<DateTimeGraphType>("issueData",
+                resolve:context => context.Source.IssueData
+                );
 
             Field<GroupSubjectType>("groupSubject",
                 resolve: context => groupSubjectFacade.GetById(context.Source.GroupSubjectId) 

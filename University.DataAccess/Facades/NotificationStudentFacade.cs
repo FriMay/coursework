@@ -14,6 +14,14 @@ namespace University.DataAccess.Facades {
             return GetContext.NotificationStudents;
         }
 
+        public override NotificationStudent Edit(int id, NotificationStudent value) {
+            NotificationStudent notificationStudent = GetById(id);
+            notificationStudent.Notification = value.Notification ?? notificationStudent.Notification;
+            notificationStudent.Student = value.Student ?? notificationStudent.Student;
+            
+            return Update(notificationStudent);
+        }
+
         public IEnumerable<NotificationStudent> GetByNotificationId(int sourceId) {
             return GetContext.NotificationStudents.Where(x => x.Notification.Id==(sourceId));
         }

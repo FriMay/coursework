@@ -14,6 +14,14 @@ namespace University.DataAccess.Facades {
             return GetContext.UserMarks;
         }
 
+        public override UserMark Edit(int id, UserMark value) {
+            UserMark userMark = GetById(id);
+            userMark.Mark = value.Mark ?? userMark.Mark;
+            userMark.IssueData = value.IssueData?? userMark.IssueData;
+            userMark.Student = value.Student ?? userMark.Student;
+            return Update(userMark);
+        }
+
         public IEnumerable<UserMark> GetByMarkId(int sourceId) {
             return GetContext.UserMarks.Where(x => x.Mark.Id==sourceId);
         }

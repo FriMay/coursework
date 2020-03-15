@@ -1,4 +1,4 @@
-﻿﻿﻿using System;
+﻿using System;
 
 namespace University.Database.Models {
 
@@ -6,14 +6,13 @@ namespace University.Database.Models {
 
         public int Id { get; set; }
 
-        public DateTime IssueData { get; set; }
-        
+        public DateTime? IssueData { get; set; }
+
         public int? MarkId { get; set; }
 
         public int? StudentId { get; set; }
 
         public int? GroupSubjectId { get; set; }
-
 
         public Mark Mark { get; set; }
 

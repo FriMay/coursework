@@ -13,6 +13,13 @@ namespace University.DataAccess.Facades {
             return GetContext.Subjects;
         }
 
+        public override Subject Edit(int id, Subject value) {
+            Subject subject = GetById(id);
+            subject.SubjectName = value.SubjectName ?? subject.SubjectName;
+            
+            return Update(subject);
+        }
+
         public Subject GetById(int? id) {
             return GetContext.Subjects.Find(id);
         }

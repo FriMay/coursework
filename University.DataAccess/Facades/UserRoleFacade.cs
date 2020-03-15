@@ -13,6 +13,12 @@ namespace University.DataAccess.Facades {
             return GetContext.UserRoles;
         }
 
+        public override UserRole Edit(int id, UserRole value) {
+            UserRole userRole = GetById(id);
+            userRole.RoleName = value.RoleName ?? userRole.RoleName;
+            return Update(userRole);
+        }
+
         public UserRole GetById(int? id) {
             return GetContext.UserRoles.Find(id);
         }

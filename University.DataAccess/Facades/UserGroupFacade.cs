@@ -14,6 +14,13 @@ namespace University.DataAccess.Facades {
             return GetContext.UserGroups;
         }
 
+        public override UserGroup Edit(int id, UserGroup value) {
+            UserGroup userGroup = GetById(id);
+            userGroup.Group = value.Group ?? userGroup.Group;
+            userGroup.User = value.User ?? userGroup.User;
+            return Update(userGroup);
+        }
+
         public IEnumerable<UserGroup> GetByGroupId(int sourceId) {
             return GetContext.UserGroups.Where(x=> x.Group.Id==sourceId);
         }
