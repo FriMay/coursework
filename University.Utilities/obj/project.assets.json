@@ -722,11 +722,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projects\\Coursework\\Backend\\University\\University.Utilities\\University.Utilities.csproj",
+      "projectUniqueName": "C:\\Projects\\Coursevwork\\coursework\\University.Utilities\\University.Utilities.csproj",
       "projectName": "University.Utilities",
-      "projectPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Utilities\\University.Utilities.csproj",
+      "projectPath": "C:\\Projects\\Coursevwork\\coursework\\University.Utilities\\University.Utilities.csproj",
       "packagesPath": "C:\\Users\\frima\\.nuget\\packages\\",
-      "outputPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Utilities\\obj\\",
+      "outputPath": "C:\\Projects\\Coursevwork\\coursework\\University.Utilities\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -38,6 +38,14 @@ namespace University.DataAccess.Facades {
             return GetContext.GroupSubjects.Find(id);
         }
 
+        public IQueryable<GroupSubject> GetByDayAndGroup(int groupId, int dayOfWeek) {
+            return GetContext.GroupSubjects.Where(x=> x.GroupId==groupId && x.DayOfWeek==dayOfWeek);
+        }
+
+        public GroupSubject GetByDayAndOrderAndTeacher(int dayOfWeek, int orderNumber, int teacher) {
+            return GetContext.GroupSubjects.SingleOrDefault(x =>
+                x.DayOfWeek == dayOfWeek && x.OrderNumber == orderNumber && x.TeacherId == teacher);
+        }
     }
 
 }

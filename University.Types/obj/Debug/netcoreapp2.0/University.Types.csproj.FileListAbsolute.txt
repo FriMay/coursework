@@ -12,3 +12,17 @@ E:\Projects\Coursework\Backend\University\University.Types\obj\Debug\netcoreapp2
 E:\Projects\Coursework\Backend\University\University.Types\obj\Debug\netcoreapp2.0\University.Types.pdb
 E:\Projects\Coursework\Backend\University\University.Types\bin\Debug\netcoreapp2.0\University.DataAccess.dll
 E:\Projects\Coursework\Backend\University\University.Types\bin\Debug\netcoreapp2.0\University.DataAccess.pdb
+C:\Projects\Coursevwork\coursework\University.Types\bin\Debug\netcoreapp2.0\University.Types.deps.json
+C:\Projects\Coursevwork\coursework\University.Types\bin\Debug\netcoreapp2.0\University.Types.dll
+C:\Projects\Coursevwork\coursework\University.Types\bin\Debug\netcoreapp2.0\University.Types.pdb
+C:\Projects\Coursevwork\coursework\University.Types\bin\Debug\netcoreapp2.0\University.DataAccess.dll
+C:\Projects\Coursevwork\coursework\University.Types\bin\Debug\netcoreapp2.0\University.Database.dll
+C:\Projects\Coursevwork\coursework\University.Types\bin\Debug\netcoreapp2.0\University.DataAccess.pdb
+C:\Projects\Coursevwork\coursework\University.Types\bin\Debug\netcoreapp2.0\University.Database.pdb
+C:\Projects\Coursevwork\coursework\University.Types\obj\Debug\netcoreapp2.0\University.Types.csprojAssemblyReference.cache
+C:\Projects\Coursevwork\coursework\University.Types\obj\Debug\netcoreapp2.0\University.Types.csproj.CoreCompileInputs.cache
+C:\Projects\Coursevwork\coursework\University.Types\obj\Debug\netcoreapp2.0\University.Types.AssemblyInfoInputs.cache
+C:\Projects\Coursevwork\coursework\University.Types\obj\Debug\netcoreapp2.0\University.Types.AssemblyInfo.cs
+C:\Projects\Coursevwork\coursework\University.Types\obj\Debug\netcoreapp2.0\University.Types.csproj.CopyComplete
+C:\Projects\Coursevwork\coursework\University.Types\obj\Debug\netcoreapp2.0\University.Types.dll
+C:\Projects\Coursevwork\coursework\University.Types\obj\Debug\netcoreapp2.0\University.Types.pdb

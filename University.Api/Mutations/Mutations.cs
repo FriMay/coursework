@@ -1,14 +1,14 @@
 ﻿using System;
+using System.Linq;
 using GraphQL.Types;
 using University.DataAccess.Facades;
 using University.Database.Models;
+using University.Types.GroupSubject;
 using University.Types.Mark;
 using University.Types.User;
 
 namespace University.Mutations {
-
     public class Mutations : ObjectGraphType {
-
         private void AddMarkMutations(MarkFacade markFacade) {
             // Field<MarkType>("addMark",
             //     arguments: new QueryArguments(
@@ -40,22 +40,37 @@ namespace University.Mutations {
             // );
         }
 
-        private void AddUserMutations(UserFacade userFacade, UserRoleFacade userRoleFacade) {
+        private void AddUserMutations(UserFacade userFacade, UserRoleFacade userRoleFacade,
+            UserGroupFacade userGroupFacade, GroupFacade groupFacade) {
             User ParseUser(User user) {
-                user.UserRole = userRoleFacade.GetById(user.UserRoleId);
+                user.UserRole = userRoleFacade.GetAll().SingleOrDefault(x => x.RoleName == "Student");
                 return user;
             }
 
             Field<UserType>("addUser",
-                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "userId"},
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "groupId"},
+                    new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "userId"},
                     new QueryArgument<NonNullGraphType<UserInputType>> {Name = "user"}),
                 resolve: context => {
                     userFacade.Validate(context.GetArgument<int>("userId"));
-                    var user = ParseUser( context.GetArgument<User>("user"));
-                    if (user.FirstName == null || user.LastName == null || user.UserRole == null || user.Login == null || user.Password == null) {
+                    var user = ParseUser(context.GetArgument<User>("user"));
+                    var groupId = context.GetArgument<int>("groupId");
+                    if (user.FirstName == null || user.LastName == null || user.Login == null ||
+                        user.Password == null) {
                         throw new ArgumentException();
                     }
-                    return userFacade.Add(user);
+
+                    if (userFacade.GetByLogin(user.Login) != null) {
+                        return null;
+                    }
+
+                    user = userFacade.Add(user);
+
+                    UserGroup userGroup = new UserGroup {User = user, Group = groupFacade.GetById(groupId)};
+
+                    userGroupFacade.Add(userGroup);
+
+                    return user;
                 }
             );
 
@@ -84,7 +99,17 @@ namespace University.Mutations {
 
         private void AddGroupMutations(GroupFacade groupFacade) { }
 
-        private void AddGroupSubjectMutations(GroupSubjectFacade groupSubjectFacade) { }
+        private void AddGroupSubjectMutations(GroupSubjectFacade groupSubjectFacade, UserFacade userFacade) {
+            Field<GroupSubjectType>("addGroupSubject",
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "userId"},
+                    new QueryArgument<NonNullGraphType<GroupSubjectInputType>> {Name = "groupSubject"}),
+                resolve: context => {
+                    userFacade.Validate(context.GetArgument<int>("userId"));
+                    var group = context.GetArgument<GroupSubject>("groupSubject");
+                    return  groupSubjectFacade.Add(group);
+                }
+            );
+        }
 
         private void AddNotificationMutations(NotificationFacade notificationFacade) { }
 
@@ -104,11 +129,11 @@ namespace University.Mutations {
             UserGroupFacade userGroupFacade, UserMarkFacade userMarkFacade, UserRoleFacade userRoleFacade) {
             AddMarkMutations(markFacade);
 
-            AddUserMutations(userFacade, userRoleFacade);
+            AddUserMutations(userFacade, userRoleFacade, userGroupFacade, groupFacade);
 
             AddGroupMutations(groupFacade);
 
-            AddGroupSubjectMutations(groupSubjectFacade);
+            AddGroupSubjectMutations(groupSubjectFacade, userFacade);
 
             AddNotificationMutations(notificationFacade);
 
@@ -122,7 +147,5 @@ namespace University.Mutations {
 
             AddUserRoleMutations(userRoleFacade);
         }
-
     }
-
 }

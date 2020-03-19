@@ -1,5 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "University.Api", "University.Api\University.Api.csproj", "{4C58E88B-30BD-4767-B9D0-0684EAD1D5B2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "University.Database", "University.Database\University.Database.csproj", "{E23A2ADF-5EF6-4255-ADD2-36A6B69EF49A}"
@@ -36,5 +39,11 @@ Global
 		{6241C851-3BFE-475C-8493-2939C9E33FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6241C851-3BFE-475C-8493-2939C9E33FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6241C851-3BFE-475C-8493-2939C9E33FEB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EFB16DBE-6719-412D-B52A-D39286DAE55D}
 	EndGlobalSection
 EndGlobal

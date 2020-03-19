@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "E:\\Projects\\Coursework\\Backend\\University\\University.Api\\University.Api.csproj",
+    "projectUniqueName": "C:\\Projects\\Coursevwork\\coursework\\University.Api\\University.Api.csproj",
     "projectName": "University.Api",
-    "projectPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Api\\University.Api.csproj",
-    "outputPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Api\\obj\\",
+    "projectPath": "C:\\Projects\\Coursevwork\\coursework\\University.Api\\University.Api.csproj",
+    "outputPath": "C:\\Projects\\Coursevwork\\coursework\\University.Api\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -19,17 +19,17 @@
     "frameworks": {
       "netcoreapp2.0": {
         "projectReferences": {
-          "E:\\Projects\\Coursework\\Backend\\University\\University.DataAccess\\University.DataAccess.csproj": {
-            "projectPath": "E:\\Projects\\Coursework\\Backend\\University\\University.DataAccess\\University.DataAccess.csproj"
+          "C:\\Projects\\Coursevwork\\coursework\\University.DataAccess\\University.DataAccess.csproj": {
+            "projectPath": "C:\\Projects\\Coursevwork\\coursework\\University.DataAccess\\University.DataAccess.csproj"
           },
-          "E:\\Projects\\Coursework\\Backend\\University\\University.Database\\University.Database.csproj": {
-            "projectPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Database\\University.Database.csproj"
+          "C:\\Projects\\Coursevwork\\coursework\\University.Database\\University.Database.csproj": {
+            "projectPath": "C:\\Projects\\Coursevwork\\coursework\\University.Database\\University.Database.csproj"
           },
-          "E:\\Projects\\Coursework\\Backend\\University\\University.Types\\University.Types.csproj": {
-            "projectPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Types\\University.Types.csproj"
+          "C:\\Projects\\Coursevwork\\coursework\\University.Types\\University.Types.csproj": {
+            "projectPath": "C:\\Projects\\Coursevwork\\coursework\\University.Types\\University.Types.csproj"
           },
-          "E:\\Projects\\Coursework\\Backend\\University\\University.Utilities\\University.Utilities.csproj": {
-            "projectPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Utilities\\University.Utilities.csproj"
+          "C:\\Projects\\Coursevwork\\coursework\\University.Utilities\\University.Utilities.csproj": {
+            "projectPath": "C:\\Projects\\Coursevwork\\coursework\\University.Utilities\\University.Utilities.csproj"
           }
         }
       }

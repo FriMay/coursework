@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "E:\\Projects\\Coursework\\Backend\\University\\University.Utilities\\University.Utilities.csproj",
+    "projectUniqueName": "C:\\Projects\\Coursevwork\\coursework\\University.Utilities\\University.Utilities.csproj",
     "projectName": "University.Utilities",
-    "projectPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Utilities\\University.Utilities.csproj",
-    "outputPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Utilities\\obj\\",
+    "projectPath": "C:\\Projects\\Coursevwork\\coursework\\University.Utilities\\University.Utilities.csproj",
+    "outputPath": "C:\\Projects\\Coursevwork\\coursework\\University.Utilities\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

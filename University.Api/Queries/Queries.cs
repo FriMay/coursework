@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using GraphQL.Types;
 using University.DataAccess.Facades;
 using University.Database.Models;
-using University.Types;
 using University.Types.Group;
 using University.Types.GroupSubject;
 using University.Types.Mark;
@@ -34,7 +34,7 @@ namespace University.Queries {
             );
         }
 
-        private void AddUserQueries(UserFacade userFacade) {
+        private void AddUserQueries(UserFacade userFacade, UserRoleFacade userRoleFacade) {
             Field<ListGraphType<UserType>>(
                 "allUsers",
                 resolve: context => userFacade.GetAll()
@@ -46,6 +46,23 @@ namespace University.Queries {
                     var id = context.GetArgument<int?>("id");
 
                     return id != null ? (userFacade.GetById((int) id)) : null;
+                }
+            );
+
+            Field<ListGraphType<UserType>>("teachers",
+                resolve: context => userFacade.GetByUserRoleId(userRoleFacade.GetByName("Teacher").Id));
+
+            
+            
+            Field<ListGraphType<UserType>>("studentsByGroupId",
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "groupId"}),
+                resolve: context => {
+
+                    var groupId = context.GetArgument<int>("groupId");
+
+                    return userFacade.GetStudentsByGroupId(groupId);
+
+
                 }
             );
         }
@@ -70,6 +87,41 @@ namespace University.Queries {
             Field<ListGraphType<GroupSubjectType>>(
                 "allGroupSubjects",
                 resolve: context => groupSubjectFacade.GetAll()
+            );
+            
+            Field<ListGraphType<GroupSubjectType>>("teachersDisabled",
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "dayOfWeek"},
+                    new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "orderNumber"},
+                    new QueryArgument<ListGraphType<IntGraphType>> {Name = "teachers"}),
+                resolve: context => {
+                    
+                    var teachers =  context.GetArgument<List<int>>("teachers");
+                    var dayOfWeek = context.GetArgument<int>("dayOfWeek");
+                    var orderNumber = context.GetArgument<int>("orderNumber");
+                    
+                    List<GroupSubject> groupSubjects = new List<GroupSubject>();
+
+                    foreach (var teacher in teachers) {
+                        GroupSubject groupSubject = groupSubjectFacade.GetByDayAndOrderAndTeacher(dayOfWeek, orderNumber, teacher);
+                        if (groupSubject != null) {
+                            groupSubjects.Add(groupSubject);
+                        }
+                    }
+                    
+                    return groupSubjects;
+                }
+            );
+
+            Field<ListGraphType<GroupSubjectType>>("subjectsOnDay",
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "groupId"},
+                    new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "dayOfWeek"}),
+                resolve: context => {
+                    
+                    var groupId = context.GetArgument<int>("groupId");
+                    var dayOfWeek = context.GetArgument<int>("dayOfWeek");
+
+                    return groupSubjectFacade.GetByDayAndGroup(groupId, dayOfWeek);
+                }
             );
 
             Field<GroupSubjectType>("groupSubject",
@@ -182,9 +234,10 @@ namespace University.Queries {
             GroupSubjectFacade groupSubjectFacade, NotificationFacade notificationFacade,
             NotificationStudentFacade notificationStudentFacade, SubjectFacade subjectFacade,
             UserGroupFacade userGroupFacade, UserMarkFacade userMarkFacade, UserRoleFacade userRoleFacade) {
+            
             AddMarkQueries(markFacade);
 
-            AddUserQueries(userFacade);
+            AddUserQueries(userFacade, userRoleFacade);
 
             AddGroupQueries(groupFacade);
 

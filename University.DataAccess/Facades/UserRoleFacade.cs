@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using University.Database;
 using University.Database.Models;
 
@@ -23,6 +24,9 @@ namespace University.DataAccess.Facades {
             return GetContext.UserRoles.Find(id);
         }
 
+        public UserRole GetByName(string teacher) {
+            return GetContext.UserRoles.SingleOrDefault(x => x.RoleName == teacher);
+        }
     }
 
 }

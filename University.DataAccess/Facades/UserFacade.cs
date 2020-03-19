@@ -5,9 +5,7 @@ using University.Database;
 using University.Database.Models;
 
 namespace University.DataAccess.Facades {
-
     public class UserFacade : AbstractFacade<User> {
-
         public UserFacade(UniversityContext context)
             : base(context) { }
 
@@ -46,12 +44,29 @@ namespace University.DataAccess.Facades {
             if (user == null) {
                 return null;
             }
+
             if (GetContext.UserRoles.Find(user.UserRoleId).RoleName.Equals("Student")) {
                 throw new ArgumentException();
             }
+
             return user;
         }
 
-    }
+        public IEnumerable<User> GetStudentsByGroupId(int groupId) {
+            IQueryable<UserGroup> userGroups = GetContext.UserGroups.Where(x =>
+                x.GroupId.Equals(groupId));
+            
+            List<User> users = new List<User>();
 
+            foreach (var a in userGroups) {
+                users.Add(GetContext.Users.Find(a.UserId));
+            }
+
+            return users.Where(x=> GetContext.UserRoles.Find(x.UserRoleId).RoleName == "Student");
+        }
+
+        public User GetByLogin(string userLogin) {
+            return GetContext.Users.SingleOrDefault(x => x.Login == userLogin);
+        }
+    }
 }

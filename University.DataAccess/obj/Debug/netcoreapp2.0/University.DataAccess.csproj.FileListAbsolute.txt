@@ -10,3 +10,15 @@ E:\Projects\Coursework\Backend\University\University.DataAccess\obj\Debug\netcor
 E:\Projects\Coursework\Backend\University\University.DataAccess\obj\Debug\netcoreapp2.0\University.DataAccess.csproj.CopyComplete
 E:\Projects\Coursework\Backend\University\University.DataAccess\obj\Debug\netcoreapp2.0\University.DataAccess.dll
 E:\Projects\Coursework\Backend\University\University.DataAccess\obj\Debug\netcoreapp2.0\University.DataAccess.pdb
+C:\Projects\Coursevwork\coursework\University.DataAccess\bin\Debug\netcoreapp2.0\University.DataAccess.deps.json
+C:\Projects\Coursevwork\coursework\University.DataAccess\bin\Debug\netcoreapp2.0\University.DataAccess.dll
+C:\Projects\Coursevwork\coursework\University.DataAccess\bin\Debug\netcoreapp2.0\University.DataAccess.pdb
+C:\Projects\Coursevwork\coursework\University.DataAccess\bin\Debug\netcoreapp2.0\University.Database.dll
+C:\Projects\Coursevwork\coursework\University.DataAccess\bin\Debug\netcoreapp2.0\University.Database.pdb
+C:\Projects\Coursevwork\coursework\University.DataAccess\obj\Debug\netcoreapp2.0\University.DataAccess.csprojAssemblyReference.cache
+C:\Projects\Coursevwork\coursework\University.DataAccess\obj\Debug\netcoreapp2.0\University.DataAccess.csproj.CoreCompileInputs.cache
+C:\Projects\Coursevwork\coursework\University.DataAccess\obj\Debug\netcoreapp2.0\University.DataAccess.AssemblyInfoInputs.cache
+C:\Projects\Coursevwork\coursework\University.DataAccess\obj\Debug\netcoreapp2.0\University.DataAccess.AssemblyInfo.cs
+C:\Projects\Coursevwork\coursework\University.DataAccess\obj\Debug\netcoreapp2.0\University.DataAccess.csproj.CopyComplete
+C:\Projects\Coursevwork\coursework\University.DataAccess\obj\Debug\netcoreapp2.0\University.DataAccess.dll
+C:\Projects\Coursevwork\coursework\University.DataAccess\obj\Debug\netcoreapp2.0\University.DataAccess.pdb

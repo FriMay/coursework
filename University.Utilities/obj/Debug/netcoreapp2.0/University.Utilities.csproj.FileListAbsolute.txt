@@ -7,3 +7,12 @@ E:\Projects\Coursework\Backend\University\University.Utilities\obj\Debug\netcore
 E:\Projects\Coursework\Backend\University\University.Utilities\obj\Debug\netcoreapp2.0\University.Utilities.AssemblyInfo.cs
 E:\Projects\Coursework\Backend\University\University.Utilities\obj\Debug\netcoreapp2.0\University.Utilities.dll
 E:\Projects\Coursework\Backend\University\University.Utilities\obj\Debug\netcoreapp2.0\University.Utilities.pdb
+C:\Projects\Coursevwork\coursework\University.Utilities\bin\Debug\netcoreapp2.0\University.Utilities.deps.json
+C:\Projects\Coursevwork\coursework\University.Utilities\bin\Debug\netcoreapp2.0\University.Utilities.dll
+C:\Projects\Coursevwork\coursework\University.Utilities\bin\Debug\netcoreapp2.0\University.Utilities.pdb
+C:\Projects\Coursevwork\coursework\University.Utilities\obj\Debug\netcoreapp2.0\University.Utilities.csprojAssemblyReference.cache
+C:\Projects\Coursevwork\coursework\University.Utilities\obj\Debug\netcoreapp2.0\University.Utilities.csproj.CoreCompileInputs.cache
+C:\Projects\Coursevwork\coursework\University.Utilities\obj\Debug\netcoreapp2.0\University.Utilities.AssemblyInfoInputs.cache
+C:\Projects\Coursevwork\coursework\University.Utilities\obj\Debug\netcoreapp2.0\University.Utilities.AssemblyInfo.cs
+C:\Projects\Coursevwork\coursework\University.Utilities\obj\Debug\netcoreapp2.0\University.Utilities.dll
+C:\Projects\Coursevwork\coursework\University.Utilities\obj\Debug\netcoreapp2.0\University.Utilities.pdb

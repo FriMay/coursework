@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "E:\\Projects\\Coursework\\Backend\\University\\University.DataAccess\\University.DataAccess.csproj",
+    "projectUniqueName": "C:\\Projects\\Coursevwork\\coursework\\University.DataAccess\\University.DataAccess.csproj",
     "projectName": "University.DataAccess",
-    "projectPath": "E:\\Projects\\Coursework\\Backend\\University\\University.DataAccess\\University.DataAccess.csproj",
-    "outputPath": "E:\\Projects\\Coursework\\Backend\\University\\University.DataAccess\\obj\\",
+    "projectPath": "C:\\Projects\\Coursevwork\\coursework\\University.DataAccess\\University.DataAccess.csproj",
+    "outputPath": "C:\\Projects\\Coursevwork\\coursework\\University.DataAccess\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -19,8 +19,8 @@
     "frameworks": {
       "netcoreapp2.0": {
         "projectReferences": {
-          "E:\\Projects\\Coursework\\Backend\\University\\University.Database\\University.Database.csproj": {
-            "projectPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Database\\University.Database.csproj"
+          "C:\\Projects\\Coursevwork\\coursework\\University.Database\\University.Database.csproj": {
+            "projectPath": "C:\\Projects\\Coursevwork\\coursework\\University.Database\\University.Database.csproj"
           }
         }
       }
