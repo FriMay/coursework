@@ -16,18 +16,22 @@ namespace University.DataAccess.Facades {
         public T Add(T value) {
             GetContext.Add(value);
             GetContext.SaveChanges();
+            GetContext.EnsureSeedData();
             return value;
         }
 
         public T Update(T value) {
             GetContext.Update(value);
             GetContext.SaveChanges();
+            GetContext.EnsureSeedData();
+
             return value;
         }
 
         public T Delete(T value) {
             GetContext.Remove(value);
             GetContext.SaveChanges();
+            GetContext.EnsureSeedData();
             return value;
         }
 
