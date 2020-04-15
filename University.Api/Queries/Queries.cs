@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using GraphQL.Types;
 using University.DataAccess.Facades;
 using University.Database.Models;
@@ -15,9 +16,7 @@ using University.Types.UserMark;
 using University.Types.UserRole;
 
 namespace University.Queries {
-
     public class Queries : ObjectGraphType {
-
         private void AddMarkQueries(MarkFacade markFacade) {
             Field<MarkType>("mark",
                 arguments: new QueryArguments(new QueryArgument<IntGraphType> {Name = "id"}),
@@ -52,17 +51,13 @@ namespace University.Queries {
             Field<ListGraphType<UserType>>("teachers",
                 resolve: context => userFacade.GetByUserRoleId(userRoleFacade.GetByName("Teacher").Id));
 
-            
-            
+
             Field<ListGraphType<UserType>>("studentsByGroupId",
                 arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "groupId"}),
                 resolve: context => {
-
                     var groupId = context.GetArgument<int>("groupId");
 
                     return userFacade.GetStudentsByGroupId(groupId);
-
-
                 }
             );
         }
@@ -83,31 +78,48 @@ namespace University.Queries {
             );
         }
 
-        private void AddGroupSubjectQueries(GroupSubjectFacade groupSubjectFacade) {
+        private void AddGroupSubjectQueries(GroupSubjectFacade groupSubjectFacade, SubjectFacade subjectFacade,
+            UserFacade userFacade) {
             Field<ListGraphType<GroupSubjectType>>(
                 "allGroupSubjects",
                 resolve: context => groupSubjectFacade.GetAll()
             );
-            
+
+            Field<ListGraphType<GroupSubjectType>>("subjectListOnWeek",
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "groupId"}),
+                resolve: context => {
+                    var groupId = context.GetArgument<int>("groupId");
+
+                    IEnumerable<GroupSubject> groupSubjects = groupSubjectFacade.GetByGroupId(groupId);
+
+                    foreach (var groupSubject in groupSubjects) {
+                        groupSubject.Subject = subjectFacade.GetById(groupSubject.SubjectId);
+                        groupSubject.Teacher = userFacade.GetById(groupSubject.TeacherId);
+                    }
+
+                    return groupSubjects;
+                }
+            );
+
             Field<ListGraphType<GroupSubjectType>>("teachersDisabled",
                 arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "dayOfWeek"},
                     new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "orderNumber"},
                     new QueryArgument<ListGraphType<IntGraphType>> {Name = "teachers"}),
                 resolve: context => {
-                    
-                    var teachers =  context.GetArgument<List<int>>("teachers");
+                    var teachers = context.GetArgument<List<int>>("teachers");
                     var dayOfWeek = context.GetArgument<int>("dayOfWeek");
                     var orderNumber = context.GetArgument<int>("orderNumber");
-                    
+
                     List<GroupSubject> groupSubjects = new List<GroupSubject>();
 
                     foreach (var teacher in teachers) {
-                        GroupSubject groupSubject = groupSubjectFacade.GetByDayAndOrderAndTeacher(dayOfWeek, orderNumber, teacher);
+                        GroupSubject groupSubject =
+                            groupSubjectFacade.GetByDayAndOrderAndTeacher(dayOfWeek, orderNumber, teacher);
                         if (groupSubject != null) {
                             groupSubjects.Add(groupSubject);
                         }
                     }
-                    
+
                     return groupSubjects;
                 }
             );
@@ -116,7 +128,6 @@ namespace University.Queries {
                 arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "groupId"},
                     new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "dayOfWeek"}),
                 resolve: context => {
-                    
                     var groupId = context.GetArgument<int>("groupId");
                     var dayOfWeek = context.GetArgument<int>("dayOfWeek");
 
@@ -234,14 +245,13 @@ namespace University.Queries {
             GroupSubjectFacade groupSubjectFacade, NotificationFacade notificationFacade,
             NotificationStudentFacade notificationStudentFacade, SubjectFacade subjectFacade,
             UserGroupFacade userGroupFacade, UserMarkFacade userMarkFacade, UserRoleFacade userRoleFacade) {
-            
             AddMarkQueries(markFacade);
 
             AddUserQueries(userFacade, userRoleFacade);
 
             AddGroupQueries(groupFacade);
 
-            AddGroupSubjectQueries(groupSubjectFacade);
+            AddGroupSubjectQueries(groupSubjectFacade, subjectFacade, userFacade);
 
             AddNotificationQueries(notificationFacade);
 
@@ -269,7 +279,5 @@ namespace University.Queries {
                 }
             );
         }
-
     }
-
 }

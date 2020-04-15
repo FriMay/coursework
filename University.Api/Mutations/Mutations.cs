@@ -109,6 +109,14 @@ namespace University.Mutations {
                     return  groupSubjectFacade.Add(group);
                 }
             );
+            
+            Field<GroupSubjectType>("deleteGroupSubject",
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "groupSubjectId"}),
+                resolve: context => {
+                    var groupSubjectId = context.GetArgument<int>("groupSubjectId");
+                    return   groupSubjectFacade.Delete(groupSubjectFacade.GetById(groupSubjectId));
+                }
+            );
         }
 
         private void AddNotificationMutations(NotificationFacade notificationFacade) { }
