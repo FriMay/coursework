@@ -40,6 +40,10 @@ namespace University.DataAccess.Facades {
             return GetContext.UserGroups.Find(id);
         }
 
+        public UserGroup GetUserGroupByUserId(int deleteId) {
+            return GetContext.UserGroups.SingleOrDefault(x => x.UserId == deleteId);
+        }
+
     }
 
 }

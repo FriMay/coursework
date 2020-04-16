@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using GraphQL.Language.AST;
 using GraphQL.Types;
 using University.DataAccess.Facades;
 using University.Database.Models;
@@ -79,8 +80,9 @@ namespace University.Mutations {
                     new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "deleteId"}),
                 resolve: context => {
                     userFacade.Validate(context.GetArgument<int>("userId"));
-                    var deleteId = userFacade.GetById(context.GetArgument<int>("deleteId"));
-                    return userFacade.Delete(deleteId);
+                    var deleteUser = userFacade.GetById(context.GetArgument<int>("deleteId"));
+                    userGroupFacade.Delete(userGroupFacade.GetUserGroupByUserId(deleteUser.Id));
+                    return userFacade.Delete(deleteUser);
                 }
             );
 
