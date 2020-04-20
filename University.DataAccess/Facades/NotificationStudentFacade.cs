@@ -34,6 +34,10 @@ namespace University.DataAccess.Facades {
             return GetContext.NotificationStudents.Find(id);
         }
 
+        public void DeleteByNotification(Notification notification) {
+            DeleteRange(GetContext.NotificationStudents.Where(x=> x.NotificationId==notification.Id));
+        }
+
     }
 
 }

@@ -16,7 +16,9 @@ using University.Types.UserMark;
 using University.Types.UserRole;
 
 namespace University.Queries {
+
     public class Queries : ObjectGraphType {
+
         private void AddMarkQueries(MarkFacade markFacade) {
             Field<MarkType>("mark",
                 arguments: new QueryArguments(new QueryArgument<IntGraphType> {Name = "id"}),
@@ -100,6 +102,22 @@ namespace University.Queries {
                     return groupSubjects;
                 }
             );
+            
+            Field<ListGraphType<GroupSubjectType>>("subjectsForTeacher",
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "teacherId"}),
+                resolve: context => {
+                    var teacherId = context.GetArgument<int>("teacherId");
+
+                    IEnumerable<GroupSubject> groupSubjects = groupSubjectFacade.GetScheduleByTeacherId(teacherId);
+
+                    foreach (var groupSubject in groupSubjects) {
+                        groupSubject.Subject = subjectFacade.GetById(groupSubject.SubjectId);
+                        groupSubject.Teacher = userFacade.GetById(groupSubject.TeacherId);
+                    }
+
+                    return groupSubjects;
+                }
+            );
 
             Field<ListGraphType<GroupSubjectType>>("teachersDisabled",
                 arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "dayOfWeek"},
@@ -157,6 +175,16 @@ namespace University.Queries {
                     var id = context.GetArgument<int?>("id");
 
                     return id != null ? (notificationFacade.GetById((int) id)) : null;
+                }
+            );
+
+
+            Field<ListGraphType<NotificationType>>("notificationsByGroupId",
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "groupId"}),
+                resolve: context => {
+                    var groupId = context.GetArgument<int>("groupId");
+
+                    return notificationFacade.GetByGroupId(groupId);
                 }
             );
         }
@@ -223,6 +251,18 @@ namespace University.Queries {
                     return id != null ? (userMarkFacade.GetById((int) id)) : null;
                 }
             );
+            
+            Field<ListGraphType<UserMarkType>>("attendance",
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "groupSubjectId"},
+                    new QueryArgument<NonNullGraphType<DateTimeGraphType>> {Name = "date"}),
+                resolve: context => {
+                    var groupSubjectId = context.GetArgument<int>("groupSubjectId");
+                    var date = context.GetArgument<DateTime>("date");
+                    var leftDate = date.AddMinutes(-1);
+                    var rightDate = date.AddMinutes(1);
+                    return userMarkFacade.GetByGroupSubjectAndIssueDate(groupSubjectId, leftDate, rightDate);
+                }
+            );
         }
 
         private void AddUserRoleQueries(UserRoleFacade userRoleFacade) {
@@ -265,10 +305,10 @@ namespace University.Queries {
 
             AddUserRoleQueries(userRoleFacade);
 
-            AddAuthorizeQueries(userFacade);
+            AddAuthorizeQueries(userFacade, userRoleFacade);
         }
 
-        private void AddAuthorizeQueries(UserFacade userFacade) {
+        private void AddAuthorizeQueries(UserFacade userFacade, UserRoleFacade userRoleFacade) {
             Field<UserType>("login",
                 arguments: new QueryArguments(new QueryArgument<NonNullGraphType<StringGraphType>> {Name = "login"},
                     new QueryArgument<NonNullGraphType<StringGraphType>> {Name = "password"}),
@@ -279,5 +319,7 @@ namespace University.Queries {
                 }
             );
         }
+
     }
+
 }

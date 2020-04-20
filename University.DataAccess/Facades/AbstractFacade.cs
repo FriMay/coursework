@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using University.Database;
+using University.Database.Models;
 
 namespace University.DataAccess.Facades {
 
@@ -33,6 +35,12 @@ namespace University.DataAccess.Facades {
             GetContext.SaveChanges();
             GetContext.EnsureSeedData();
             return value;
+        }
+        
+        public void DeleteRange(IQueryable<NotificationStudent> value) {
+            GetContext.RemoveRange(value);
+            GetContext.SaveChanges();
+            GetContext.EnsureSeedData();
         }
 
         public abstract T Edit(int id, T value);

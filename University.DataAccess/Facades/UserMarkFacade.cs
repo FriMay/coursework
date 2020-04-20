@@ -1,4 +1,5 @@
-﻿﻿using System.Collections.Generic;
+﻿﻿using System;
+ using System.Collections.Generic;
 using System.Linq;
 using University.Database;
 using University.Database.Models;
@@ -36,6 +37,16 @@ namespace University.DataAccess.Facades {
 
         public UserMark GetById(int? id) {
             return GetContext.UserMarks.Find(id);
+        }
+
+        public IEnumerable<UserMark> GetByGroupSubjectAndIssueDate(int groupSubjectId, DateTime leftDate, DateTime rightDate) {
+            return GetContext.UserMarks.Where(x=>x.GroupSubjectId==groupSubjectId&& x.IssueData>leftDate && x.IssueData < rightDate);
+        }
+
+        public UserMark GetByUserMarkInputType(UserMark mark, DateTime leftDate, DateTime rightDate) {
+            return GetContext.UserMarks.SingleOrDefault(x =>
+                x.StudentId == mark.StudentId && x.GroupSubjectId == mark.GroupSubjectId &&
+                x.IssueData>leftDate && x.IssueData < rightDate);
         }
 
     }

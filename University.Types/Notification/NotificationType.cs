@@ -9,8 +9,7 @@ namespace University.Types.Notification {
 
         public NotificationType(NotificationStudentFacade notificationStudentFacade, GroupFacade groupFacade) {
             Field(x => x.Id);
-            Field<StringGraphType>("message"
-                ,
+            Field<StringGraphType>("message",
                 resolve:context=> context.Source.Message);
             Field<GroupType>("group",
                 resolve: context => groupFacade.GetById(context.Source.GroupId) 

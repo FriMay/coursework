@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\Coursevwork\\coursework\\University.Types\\University.Types.csproj": {}
+    "E:\\Projects\\Coursework\\Backend\\University\\University.Types\\University.Types.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\Coursevwork\\coursework\\University.DataAccess\\University.DataAccess.csproj": {
+    "E:\\Projects\\Coursework\\Backend\\University\\University.DataAccess\\University.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\Coursevwork\\coursework\\University.DataAccess\\University.DataAccess.csproj",
+        "projectUniqueName": "E:\\Projects\\Coursework\\Backend\\University\\University.DataAccess\\University.DataAccess.csproj",
         "projectName": "University.DataAccess",
-        "projectPath": "C:\\Projects\\Coursevwork\\coursework\\University.DataAccess\\University.DataAccess.csproj",
+        "projectPath": "E:\\Projects\\Coursework\\Backend\\University\\University.DataAccess\\University.DataAccess.csproj",
         "packagesPath": "C:\\Users\\frima\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\Coursevwork\\coursework\\University.DataAccess\\obj\\",
+        "outputPath": "E:\\Projects\\Coursework\\Backend\\University\\University.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp2.0": {
             "projectReferences": {
-              "C:\\Projects\\Coursevwork\\coursework\\University.Database\\University.Database.csproj": {
-                "projectPath": "C:\\Projects\\Coursevwork\\coursework\\University.Database\\University.Database.csproj"
+              "E:\\Projects\\Coursework\\Backend\\University\\University.Database\\University.Database.csproj": {
+                "projectPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Database\\University.Database.csproj"
               }
             }
           }
@@ -45,6 +45,10 @@
       "frameworks": {
         "netcoreapp2.0": {
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.1.3, )"
+            },
             "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
@@ -60,14 +64,14 @@
         }
       }
     },
-    "C:\\Projects\\Coursevwork\\coursework\\University.Database\\University.Database.csproj": {
+    "E:\\Projects\\Coursework\\Backend\\University\\University.Database\\University.Database.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\Coursevwork\\coursework\\University.Database\\University.Database.csproj",
+        "projectUniqueName": "E:\\Projects\\Coursework\\Backend\\University\\University.Database\\University.Database.csproj",
         "projectName": "University.Database",
-        "projectPath": "C:\\Projects\\Coursevwork\\coursework\\University.Database\\University.Database.csproj",
+        "projectPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Database\\University.Database.csproj",
         "packagesPath": "C:\\Users\\frima\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\Coursevwork\\coursework\\University.Database\\obj\\",
+        "outputPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Database\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -124,14 +128,14 @@
         }
       }
     },
-    "C:\\Projects\\Coursevwork\\coursework\\University.Types\\University.Types.csproj": {
+    "E:\\Projects\\Coursework\\Backend\\University\\University.Types\\University.Types.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\Coursevwork\\coursework\\University.Types\\University.Types.csproj",
+        "projectUniqueName": "E:\\Projects\\Coursework\\Backend\\University\\University.Types\\University.Types.csproj",
         "projectName": "University.Types",
-        "projectPath": "C:\\Projects\\Coursevwork\\coursework\\University.Types\\University.Types.csproj",
+        "projectPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Types\\University.Types.csproj",
         "packagesPath": "C:\\Users\\frima\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\Coursevwork\\coursework\\University.Types\\obj\\",
+        "outputPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Types\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -150,11 +154,11 @@
         "frameworks": {
           "netcoreapp2.0": {
             "projectReferences": {
-              "C:\\Projects\\Coursevwork\\coursework\\University.DataAccess\\University.DataAccess.csproj": {
-                "projectPath": "C:\\Projects\\Coursevwork\\coursework\\University.DataAccess\\University.DataAccess.csproj"
+              "E:\\Projects\\Coursework\\Backend\\University\\University.DataAccess\\University.DataAccess.csproj": {
+                "projectPath": "E:\\Projects\\Coursework\\Backend\\University\\University.DataAccess\\University.DataAccess.csproj"
               },
-              "C:\\Projects\\Coursevwork\\coursework\\University.Database\\University.Database.csproj": {
-                "projectPath": "C:\\Projects\\Coursevwork\\coursework\\University.Database\\University.Database.csproj"
+              "E:\\Projects\\Coursework\\Backend\\University\\University.Database\\University.Database.csproj": {
+                "projectPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Database\\University.Database.csproj"
               }
             }
           }

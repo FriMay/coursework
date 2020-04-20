@@ -12,7 +12,7 @@ namespace University.Types.User {
     public class UserType : ObjectGraphType<Database.Models.User> {
 
         public UserType(UserGroupFacade userGroupFacade, UserMarkFacade userMarkFacade, UserRoleFacade userRoleFacade,
-            GroupFacade groupFacade) {
+            GroupFacade groupFacade, GroupSubjectFacade groupSubjectFacade) {
             Field(x => x.Id);
             Field<StringGraphType>("login",
                 resolve: context => context.Source.Login);
@@ -25,7 +25,13 @@ namespace University.Types.User {
             Field<StringGraphType>("secondName",
                 resolve: context => context.Source.SecondName);
             Field<ListGraphType<GroupType>>("group",
-                resolve: context => userGroupFacade.GetByUserId(context.Source.Id, groupFacade)
+                resolve: context => {
+                    if (context.Source.UserRoleId != null && Equals(context.Source.UserRoleId, userRoleFacade.GetByName("Teacher").Id)) {
+                        return groupSubjectFacade.GetByTeacherId(context.Source.Id,groupFacade);
+                    }
+
+                    return userGroupFacade.GetByUserId(context.Source.Id, groupFacade);
+                }
             );
             Field<ListGraphType<UserMarkType>>("userMarks",
                 resolve: context => userMarkFacade.GetByUserId(context.Source.Id)

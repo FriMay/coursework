@@ -3445,11 +3445,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\Coursevwork\\coursework\\University.Database\\University.Database.csproj",
+      "projectUniqueName": "E:\\Projects\\Coursework\\Backend\\University\\University.Database\\University.Database.csproj",
       "projectName": "University.Database",
-      "projectPath": "C:\\Projects\\Coursevwork\\coursework\\University.Database\\University.Database.csproj",
+      "projectPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Database\\University.Database.csproj",
       "packagesPath": "C:\\Users\\frima\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\Coursevwork\\coursework\\University.Database\\obj\\",
+      "outputPath": "E:\\Projects\\Coursework\\Backend\\University\\University.Database\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

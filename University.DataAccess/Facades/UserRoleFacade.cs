@@ -24,8 +24,8 @@ namespace University.DataAccess.Facades {
             return GetContext.UserRoles.Find(id);
         }
 
-        public UserRole GetByName(string teacher) {
-            return GetContext.UserRoles.SingleOrDefault(x => x.RoleName == teacher);
+        public UserRole GetByName(string roleName) {
+            return GetContext.UserRoles.SingleOrDefault(x => x.RoleName == roleName);
         }
     }
 

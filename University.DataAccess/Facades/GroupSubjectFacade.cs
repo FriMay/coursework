@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore.Internal;
 using University.Database;
 using University.Database.Models;
 
@@ -21,7 +22,7 @@ namespace University.DataAccess.Facades {
             groupSubject.Group = value.Group ?? groupSubject.Group;
             groupSubject.OrderNumber = value.OrderNumber ?? groupSubject.OrderNumber;
             groupSubject.DayOfWeek = value.DayOfWeek ?? groupSubject.DayOfWeek;
-            
+
             return Update(groupSubject);
         }
 
@@ -39,13 +40,34 @@ namespace University.DataAccess.Facades {
         }
 
         public IQueryable<GroupSubject> GetByDayAndGroup(int groupId, int dayOfWeek) {
-            return GetContext.GroupSubjects.Where(x=> x.GroupId==groupId && x.DayOfWeek==dayOfWeek);
+            return GetContext.GroupSubjects.Where(x => x.GroupId == groupId && x.DayOfWeek == dayOfWeek);
         }
 
         public GroupSubject GetByDayAndOrderAndTeacher(int dayOfWeek, int orderNumber, int teacher) {
             return GetContext.GroupSubjects.SingleOrDefault(x =>
                 x.DayOfWeek == dayOfWeek && x.OrderNumber == orderNumber && x.TeacherId == teacher);
         }
+
+        public IEnumerable<Group> GetByTeacherId(int teacherId, GroupFacade groupFacade) {
+            List<Group> groups = new List<Group>();
+
+
+            foreach
+            (GroupSubject gGroup
+                in GetContext.GroupSubjects
+                    .Where(x => x.TeacherId == teacherId)
+                    .AsEnumerable()
+                    .Distinct((a, b) => a.GroupId == b.GroupId))
+                groups.Add(groupFacade.GetById(gGroup.GroupId));
+
+
+            return groups;
+        }
+
+        public IEnumerable<GroupSubject> GetScheduleByTeacherId(int teacherId) {
+            return GetContext.GroupSubjects.Where(x => x.TeacherId == teacherId);
+        }
+
     }
 
 }

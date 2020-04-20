@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using GraphQL.Language.AST;
 using GraphQL.Types;
@@ -6,7 +7,9 @@ using University.DataAccess.Facades;
 using University.Database.Models;
 using University.Types.GroupSubject;
 using University.Types.Mark;
+using University.Types.Notification;
 using University.Types.User;
+using University.Types.UserMark;
 
 namespace University.Mutations {
     public class Mutations : ObjectGraphType {
@@ -121,7 +124,26 @@ namespace University.Mutations {
             );
         }
 
-        private void AddNotificationMutations(NotificationFacade notificationFacade) { }
+        private void AddNotificationMutations(NotificationFacade notificationFacade, GroupFacade groupFacade, NotificationStudentFacade notificationStudentFacade) {
+            Field<NotificationType>("addNotification",
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<NotificationInputType>> {Name = "notification"}),
+                resolve: context => {
+                    var notification = context.GetArgument<Notification>("notification");
+                    notification.Group = groupFacade.GetById(notification.GroupId);
+                    return notificationFacade.Add(notification);;
+                }
+            );
+            
+            Field<NotificationType>("deleteNotification",
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "notificationId"}),
+                resolve: context => {
+                    var notificationId = context.GetArgument<int>("notificationId");
+                    Notification notification = notificationFacade.GetById(notificationId);
+                    notificationStudentFacade.DeleteByNotification(notification);
+                    return notificationFacade.Delete(notification);
+                }
+            );
+        }
 
         private void AddNotificationStudentMutations(NotificationStudentFacade notificationStudentFacade) { }
 
@@ -129,7 +151,36 @@ namespace University.Mutations {
 
         private void AddUserGroupMutations(UserGroupFacade userGroupFacade) { }
 
-        private void AddUserMarkMutations(UserMarkFacade userMarkFacade) { }
+        private void AddUserMarkMutations(UserMarkFacade userMarkFacade) {
+            Field<UserMarkType>("editUserMarkByUserList",
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<ListGraphType<UserMarkInputType>>> {Name = "userMarks"}),
+                resolve: context => {
+
+                    List<UserMark> marks = context.GetArgument<List<UserMark>>("userMarks");
+
+                    foreach (UserMark mark in marks) {
+                        if (mark.IssueData != null) {
+                            DateTime leftDate = mark.IssueData.Value.AddMinutes(-1);
+                            DateTime rightDate = mark.IssueData.Value.AddMinutes(1);
+                        
+                            UserMark old = userMarkFacade.GetByUserMarkInputType(mark,leftDate,rightDate);
+                            if (old == null) {
+                                userMarkFacade.Add(mark);
+                            }
+                            else {
+                                if (old.MarkId != mark.MarkId) {
+                                    old.MarkId = mark.MarkId;
+                                    userMarkFacade.Update(old);
+                                }
+                            }
+                        }
+                    }
+
+                    return null;
+                }
+            );
+            
+        }
 
         private void AddUserRoleMutations(UserRoleFacade userRoleFacade) { }
 
@@ -145,7 +196,7 @@ namespace University.Mutations {
 
             AddGroupSubjectMutations(groupSubjectFacade, userFacade);
 
-            AddNotificationMutations(notificationFacade);
+            AddNotificationMutations(notificationFacade, groupFacade, notificationStudentFacade);
 
             AddNotificationStudentMutations(notificationStudentFacade);
 
