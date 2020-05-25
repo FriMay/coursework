@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GraphQL.Language.AST;
 using GraphQL.Types;
+using Microsoft.AspNetCore.Mvc.Razor;
 using University.DataAccess.Facades;
 using University.Database.Models;
 using University.Types.GroupSubject;
-using University.Types.Mark;
 using University.Types.Notification;
 using University.Types.User;
 using University.Types.UserMark;
@@ -14,34 +13,6 @@ using University.Types.UserMark;
 namespace University.Mutations {
     public class Mutations : ObjectGraphType {
         private void AddMarkMutations(MarkFacade markFacade) {
-            // Field<MarkType>("addMark",
-            //     arguments: new QueryArguments(
-            //         new QueryArgument<NonNullGraphType<MarkInputType>> {Name = "mark"}),
-            //     resolve: context => {
-            //         var mark = context.GetArgument<Mark>("mark");    
-            //         return markFacade.Add(mark);
-            //     }
-            // );
-            //
-            // Field<MarkType>("deleteMark",
-            //     arguments: new QueryArguments(
-            //         new QueryArgument<IntGraphType> {Name = "id"}),
-            //     resolve: context => {
-            //         var mark = markFacade.GetById(context.GetArgument<int>("id"));
-            //         return markFacade.Delete(mark);
-            //     }
-            // );
-            //
-            // Field<MarkType>("editMark",
-            //     arguments: new QueryArguments(
-            //         new QueryArgument<MarkInputType> {Name = "mark"},
-            //         new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "id"}),
-            //     resolve: context => {
-            //         var id = context.GetArgument<int>("id");
-            //         var mark = context.GetArgument<Mark>("mark");
-            //         return markFacade.Edit(id, mark);
-            //     }
-            // );
         }
 
         private void AddUserMutations(UserFacade userFacade, UserRoleFacade userRoleFacade,
@@ -56,7 +27,6 @@ namespace University.Mutations {
                     new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "userId"},
                     new QueryArgument<NonNullGraphType<UserInputType>> {Name = "user"}),
                 resolve: context => {
-                    userFacade.Validate(context.GetArgument<int>("userId"));
                     var user = ParseUser(context.GetArgument<User>("user"));
                     var groupId = context.GetArgument<int>("groupId");
                     if (user.FirstName == null || user.LastName == null || user.Login == null ||
@@ -67,6 +37,8 @@ namespace University.Mutations {
                     if (userFacade.GetByLogin(user.Login) != null) {
                         return null;
                     }
+
+                    user.UserRoleId = userRoleFacade.GetByName("Студент").Id;
 
                     user = userFacade.Add(user);
 
@@ -82,7 +54,6 @@ namespace University.Mutations {
                 arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "userId"},
                     new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "deleteId"}),
                 resolve: context => {
-                    userFacade.Validate(context.GetArgument<int>("userId"));
                     var deleteUser = userFacade.GetById(context.GetArgument<int>("deleteId"));
                     userGroupFacade.Delete(userGroupFacade.GetUserGroupByUserId(deleteUser.Id));
                     return userFacade.Delete(deleteUser);
@@ -94,7 +65,6 @@ namespace University.Mutations {
                     new QueryArgument<NonNullGraphType<UserInputType>> {Name = "user"},
                     new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "editId"}),
                 resolve: context => {
-                    userFacade.Validate(context.GetArgument<int>("userId"));
                     var editId = context.GetArgument<int>("editId");
                     var user = ParseUser(context.GetArgument<User>("user"));
                     return userFacade.Edit(editId, user);
@@ -109,7 +79,6 @@ namespace University.Mutations {
                 arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "userId"},
                     new QueryArgument<NonNullGraphType<GroupSubjectInputType>> {Name = "groupSubject"}),
                 resolve: context => {
-                    userFacade.Validate(context.GetArgument<int>("userId"));
                     var group = context.GetArgument<GroupSubject>("groupSubject");
                     return  groupSubjectFacade.Add(group);
                 }
@@ -141,6 +110,32 @@ namespace University.Mutations {
                     Notification notification = notificationFacade.GetById(notificationId);
                     notificationStudentFacade.DeleteByNotification(notification);
                     return notificationFacade.Delete(notification);
+                }
+            );
+
+            Field<ListGraphType<NotificationType>>("notificationsForStudent",
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "studentId"},
+                    new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "groupId"}
+                ),
+                resolve: context => {
+                    
+                    var groupId = context.GetArgument<int>("groupId");
+                    var studentId = context.GetArgument<int>("studentId");
+
+                    IEnumerable<Notification> notifications = notificationFacade.GetByGroupId(groupId);
+                    
+                    List<Notification> notificationList = new List<Notification>();
+
+                    foreach (var notification in notifications) {
+                        if (!notificationStudentFacade.getByUserIdAndNotificationId(studentId, notification.Id)) {
+                            notificationList.Add(notification);
+                            notificationStudentFacade.Add(new NotificationStudent {
+                                NotificationId = notification.Id, StudentId = studentId
+                            });
+                        }
+                    }
+                    
+                    return notificationList;
                 }
             );
         }

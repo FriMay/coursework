@@ -11,8 +11,7 @@ namespace University.Types.Group {
         public GroupType(NotificationFacade notificationFacade, UserGroupFacade userGroupFacade,
             GroupSubjectFacade groupSubjectFacade) {
             Field(x => x.Id);
-            Field<StringGraphType>("name"
-                ,
+            Field<StringGraphType>("name",
                 resolve: context => context.Source.Name);
             Field<ListGraphType<NotificationType>>(
                 "notifications",

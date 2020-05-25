@@ -36,11 +36,11 @@ namespace University.Database.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("DayOfWeek");
+                    b.Property<int?>("DayOfWeek");
 
                     b.Property<int?>("GroupId");
 
-                    b.Property<int>("OrderNumber");
+                    b.Property<int?>("OrderNumber");
 
                     b.Property<int?>("SubjectId");
 
@@ -164,7 +164,7 @@ namespace University.Database.Migrations
 
                     b.Property<int?>("GroupSubjectId");
 
-                    b.Property<DateTime>("IssueData");
+                    b.Property<DateTime?>("IssueData");
 
                     b.Property<int?>("MarkId");
 

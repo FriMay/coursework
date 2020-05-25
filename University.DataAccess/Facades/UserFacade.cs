@@ -39,13 +39,13 @@ namespace University.DataAccess.Facades {
             }
         }
 
-        public User Login(string login, string password) {
+        public User Login(string login, string password, Boolean isThrow = true) {
             User user = GetContext.Users.SingleOrDefault(x => x.Login == login && x.Password == password);
             if (user == null) {
                 return null;
             }
 
-            if (GetContext.UserRoles.Find(user.UserRoleId).RoleName.Equals("Student")) {
+            if (GetContext.UserRoles.Find(user.UserRoleId).RoleName.Equals("Студент") && isThrow) {
                 throw new ArgumentException();
             }
 
@@ -62,7 +62,7 @@ namespace University.DataAccess.Facades {
                 users.Add(GetContext.Users.Find(a.UserId));
             }
 
-            return users.Where(x=> GetContext.UserRoles.Find(x.UserRoleId).RoleName == "Student");
+            return users.Where(x=> GetContext.UserRoles.Find(x.UserRoleId).RoleName == "Студент");
         }
 
         public User GetByLogin(string userLogin) {

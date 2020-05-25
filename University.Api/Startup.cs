@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using GraphQL;
+﻿using GraphQL;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using University.DataAccess.Facades;
 using University.Database;
-using University.Database.Models;
-using University.Queries;
 using University.Schema;
 using University.Types.Group;
 using University.Types.GroupSubject;
@@ -35,7 +27,7 @@ namespace University {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
 
         private void AddTransients(ref IServiceCollection services) {
             services.AddTransient<GroupFacade>();
@@ -50,7 +42,7 @@ namespace University {
             services.AddTransient<UserRoleFacade>();
         }
 
-        public void AddSingletonTypes(ref IServiceCollection services) {
+        private void AddSingletonTypes(ref IServiceCollection services) {
             services.AddSingleton<GroupType>();
             services.AddSingleton<GroupSubjectType>();
             services.AddSingleton<MarkType>();
@@ -62,8 +54,8 @@ namespace University {
             services.AddSingleton<UserMarkType>();
             services.AddSingleton<UserRoleType>();
         }
-        
-        public void AddSingletonInputTypes(ref IServiceCollection services) {
+
+        private void AddSingletonInputTypes(ref IServiceCollection services) {
             services.AddSingleton<GroupInputType>();
             services.AddSingleton<GroupSubjectInputType>();
             services.AddSingleton<MarkInputType>();
@@ -76,7 +68,7 @@ namespace University {
             services.AddSingleton<UserRoleInputType>();
         }
 
-        public void AddSingletonSchemas(ref IServiceCollection services) {
+        private void AddSingletonSchemas(ref IServiceCollection services) {
             
             var sp = services.BuildServiceProvider();
 

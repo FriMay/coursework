@@ -1,9 +1,6 @@
 ﻿using GraphQL.Types;
 using University.DataAccess.Facades;
 using University.Types.Group;
-using University.Types.GroupSubject;
-using University.Types.NotificationStudent;
-using University.Types.UserGroup;
 using University.Types.UserMark;
 using University.Types.UserRole;
 
@@ -26,10 +23,6 @@ namespace University.Types.User {
                 resolve: context => context.Source.SecondName);
             Field<ListGraphType<GroupType>>("group",
                 resolve: context => {
-                    if (context.Source.UserRoleId != null && Equals(context.Source.UserRoleId, userRoleFacade.GetByName("Teacher").Id)) {
-                        return groupSubjectFacade.GetByTeacherId(context.Source.Id,groupFacade);
-                    }
-
                     return userGroupFacade.GetByUserId(context.Source.Id, groupFacade);
                 }
             );

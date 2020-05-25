@@ -6,25 +6,29 @@ using University.Types.User;
 
 namespace University.Types.UserMark {
 
-    public class UserMarkType: ObjectGraphType<Database.Models.UserMark> {
+    public class UserMarkType : ObjectGraphType<Database.Models.UserMark> {
 
         public UserMarkType(GroupSubjectFacade groupSubjectFacade, UserFacade userFacade, MarkFacade markFacade) {
             Field(x => x.Id);
 
             Field<DateTimeGraphType>("issueData",
-                resolve:context => context.Source.IssueData
-                );
+                resolve: context => context.Source.IssueData
+            );
 
             Field<GroupSubjectType>("groupSubject",
-                resolve: context => groupSubjectFacade.GetById(context.Source.GroupSubjectId) 
+                resolve: context => groupSubjectFacade.GetById(context.Source.GroupSubjectId)
             );
 
             Field<UserType>("user",
-                resolve: context => userFacade.GetById(context.Source.StudentId) 
+                resolve: context => userFacade.GetById(context.Source.StudentId)
             );
-            
+
             Field<MarkType>("mark",
-                resolve: context => markFacade.GetById(context.Source.MarkId) 
+                resolve: context => markFacade.GetById(context.Source.MarkId)
+            );
+
+            Field<StringGraphType>("stringData",
+                resolve: context => context.Source.IssueData.ToString()
             );
         }
 

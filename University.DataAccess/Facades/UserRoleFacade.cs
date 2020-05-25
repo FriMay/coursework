@@ -5,7 +5,7 @@ using University.Database.Models;
 
 namespace University.DataAccess.Facades {
 
-    public class UserRoleFacade: AbstractFacade<UserRole> {
+    public class UserRoleFacade : AbstractFacade<UserRole> {
 
         public UserRoleFacade(UniversityContext context)
             : base(context) { }
@@ -27,6 +27,7 @@ namespace University.DataAccess.Facades {
         public UserRole GetByName(string roleName) {
             return GetContext.UserRoles.SingleOrDefault(x => x.RoleName == roleName);
         }
+
     }
 
 }

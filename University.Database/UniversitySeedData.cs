@@ -1,8 +1,8 @@
-﻿﻿using System.Collections.Generic;
- using System.Linq;
- using University.Database.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
+using University.Database.Models;
 
- namespace University.Database {
+namespace University.Database {
 
     public static class UniversitySeedData {
 
@@ -10,7 +10,10 @@
             if (!db.Marks.Any()) {
                 var marks = new List<Mark> {
                     new Mark {
-                        MarkValue = "Absented"
+                        MarkValue = "Отсутствовал"
+                    },
+                    new Mark {
+                        MarkValue = "Присутствовал"
                     },
                     new Mark {
                         MarkValue = "0"
@@ -33,100 +36,109 @@
                 };
                 var userRoles = new List<UserRole> {
                     new UserRole {
-                        RoleName = "Teacher"
+                        RoleName = "Студент"
                     },
                     new UserRole {
-                        RoleName = "Student"
+                        RoleName = "Преподаватель"
                     },
                     new UserRole {
-                        RoleName = "Curator"
+                        RoleName = "Куратор"
                     }
                 };
-                var group = new Group {
-                    Name = "18VP1"
+                var firstGroup = new Group {
+                    Name = "18ВП1"
                 };
+                var secondGroup = new Group {
+                    Name = "18ВП2"
+                };
+                
                 var subjects = new List<Subject> {
                     new Subject {
-                        SubjectName = "Geometry"
+                        SubjectName = "Объектно-ориентированное программирование"
                     },
                     new Subject {
-                        SubjectName = "Programming"
+                        SubjectName = "Дискретная математика"
                     },
                     new Subject {
-                        SubjectName = "English language"
+                        SubjectName = "Английский язык"
                     }
                 };
                 var users = new List<User> {
                     new User {
-                        FirstName = "Oleg",
-                        Login = "Lala",
-                        Password = "Lala",
+                        FirstName = "Владислав",
+                        SecondName = "Евгеньвич",
+                        LastName = "Бирюков",
+                        Login = "biryukov",
+                        Password = "vladislav",
                         UserRole = userRoles[0]
                     },
                     new User {
-                        FirstName = "Vasya",
-                        Login = "Lal",
-                        Password = "Lal",
+                        FirstName = "Александр",
+                        SecondName = "Юрьевич",
+                        LastName = "Афонин",
+                        Login = "afonin",
+                        Password = "alexandr",
                         UserRole = userRoles[1]
                     },
                     new User {
-                        FirstName = "Petya",
-                        Login = "La",
-                        Password = "La",
+                        FirstName = "Антон",
+                        SecondName = "Геннадьевич",
+                        LastName = "Иванчуков",
+                        Login = "ivanchukov",
+                        Password = "anton",
+                        UserRole = userRoles[1]
+                    },
+                    new User {
+                        FirstName = "Елена",
+                        SecondName = "Николаевна",
+                        LastName = "Прошкина",
+                        Login = "proshkina",
+                        Password = "elena",
                         UserRole = userRoles[2]
                     }
                 };
                 var userGroups = new List<UserGroup> {
                     new UserGroup {
                         User = users[0],
-                        Group = group
+                        Group = firstGroup
                     },
                     new UserGroup {
                         User = users[1],
-                        Group = group
+                        Group = firstGroup
+                    },
+                    new UserGroup {
+                        User = users[1],
+                        Group = secondGroup
                     },
                     new UserGroup {
                         User = users[2],
-                        Group = group
+                        Group = secondGroup
+                    },
+                    new UserGroup {
+                        User = users[2],
+                        Group = firstGroup
+                    },
+                    new UserGroup {
+                        User = users[3],
+                        Group = firstGroup
+                    },
+                    new UserGroup {
+                        User = users[3],
+                        Group = secondGroup
                     }
                 };
-                var groupSubjects = new List<GroupSubject> {
-                    new GroupSubject {
-                        DayOfWeek = 1,
-                        Group = group,
-                        OrderNumber = 1,
-                        Subject = subjects[0],
-                        Teacher = users[0]
-                    },
-                    new GroupSubject {
-                        DayOfWeek = 2,
-                        Group = group,
-                        OrderNumber = 1,
-                        Subject = subjects[1],
-                        Teacher = users[0]
-                    },
-                    new GroupSubject {
-                        DayOfWeek = 3,
-                        Group = group,
-                        OrderNumber = 1,
-                        Subject = subjects[2],
-                        Teacher = users[0]
-                    }
-                };
-                
+
                 db.Subjects.AddRange(subjects);
-                db.Groups.Add(group);
+                db.Groups.Add(firstGroup);
+                db.Groups.Add(secondGroup);
                 db.Users.AddRange(users);
                 db.UserGroups.AddRange(userGroups);
-                db.GroupSubjects.AddRange(groupSubjects);
                 db.Marks.AddRange(marks);
                 db.UserRoles.AddRange(userRoles);
-                
+
                 db.SaveChanges();
             }
         }
-        
-        
 
     }
 

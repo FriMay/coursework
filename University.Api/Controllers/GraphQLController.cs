@@ -1,11 +1,11 @@
-﻿﻿using System;
- using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using GraphQL;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;
- using University.Utilities;
+using University.Utilities;
 
- namespace University.Controllers {
+namespace University.Controllers {
 
     [Route("[controller]")]
     public class GraphQLController : Controller {

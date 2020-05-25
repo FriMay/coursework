@@ -1,11 +1,11 @@
-﻿﻿using System.IO;
- using Microsoft.EntityFrameworkCore;
- using Microsoft.EntityFrameworkCore.Design;
+﻿using System.IO;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
 namespace University.Database {
 
-    public class UniversityContextFactory: IDesignTimeDbContextFactory<UniversityContext> {
+    public class UniversityContextFactory : IDesignTimeDbContextFactory<UniversityContext> {
 
         public UniversityContext CreateDbContext(string[] args) {
             var configuration = new ConfigurationBuilder()

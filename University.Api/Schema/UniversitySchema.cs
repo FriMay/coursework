@@ -1,7 +1,4 @@
-﻿﻿using System;
-using GraphQL;
-using GraphQL.Types;
-using University.Queries;
+﻿using GraphQL;
 
 namespace University.Schema {
 

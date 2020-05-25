@@ -65,6 +65,8 @@
       <e p="University.Database" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Migrations" t="Include">
+          <e p="20200525181045_Initial.cs" t="Include" />
+          <e p="20200525181045_Initial.Designer.cs" t="Include" />
           <e p="UniversityContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">

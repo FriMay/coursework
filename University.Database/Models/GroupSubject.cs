@@ -1,6 +1,6 @@
-﻿﻿﻿using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-  namespace University.Database.Models {
+namespace University.Database.Models {
 
     public class GroupSubject {
 
@@ -13,9 +13,9 @@
         public int? SubjectId { get; set; }
 
         public int? TeacherId { get; set; }
-        
+
         public int? GroupId { get; set; }
-        
+
         public Subject Subject { get; set; }
 
         public User Teacher { get; set; }

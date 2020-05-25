@@ -5,15 +5,15 @@ using University.Types.User;
 
 namespace University.Types.UserGroup {
 
-    public class UserGroupType: ObjectGraphType<Database.Models.UserGroup> {
+    public class UserGroupType : ObjectGraphType<Database.Models.UserGroup> {
 
         public UserGroupType(GroupFacade groupFacade, UserFacade userFacade) {
             Field(x => x.Id);
             Field<GroupType>("group",
-                resolve: context => groupFacade.GetById(context.Source.GroupId) 
+                resolve: context => groupFacade.GetById(context.Source.GroupId)
             );
             Field<UserType>("user",
-                resolve: context => userFacade.GetById(context.Source.UserId) 
+                resolve: context => userFacade.GetById(context.Source.UserId)
             );
         }
 

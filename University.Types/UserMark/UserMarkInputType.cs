@@ -2,8 +2,7 @@
 
 namespace University.Types.UserMark {
 
-    public class UserMarkInputType: InputObjectGraphType {
-
+    public class UserMarkInputType : InputObjectGraphType {
 
         public UserMarkInputType() {
             Field<DateTimeGraphType>("issueData");
@@ -11,6 +10,7 @@ namespace University.Types.UserMark {
             Field<IntGraphType>("studentId");
             Field<IntGraphType>("groupSubjectId");
         }
+
     }
 
 }

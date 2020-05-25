@@ -4,7 +4,7 @@ using University.Database.Models;
 
 namespace University.DataAccess.Facades {
 
-    public class SubjectFacade: AbstractFacade<Subject> {
+    public class SubjectFacade : AbstractFacade<Subject> {
 
         public SubjectFacade(UniversityContext context)
             : base(context) { }
@@ -16,7 +16,7 @@ namespace University.DataAccess.Facades {
         public override Subject Edit(int id, Subject value) {
             Subject subject = GetById(id);
             subject.SubjectName = value.SubjectName ?? subject.SubjectName;
-            
+
             return Update(subject);
         }
 

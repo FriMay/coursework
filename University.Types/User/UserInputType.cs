@@ -2,7 +2,7 @@
 
 namespace University.Types.User {
 
-    public class UserInputType: InputObjectGraphType {
+    public class UserInputType : InputObjectGraphType {
 
         public UserInputType() {
             Field<StringGraphType>("firstName");

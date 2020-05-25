@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using GraphQL.Types;
 using University.DataAccess.Facades;
 using University.Database.Models;
@@ -51,7 +50,7 @@ namespace University.Queries {
             );
 
             Field<ListGraphType<UserType>>("teachers",
-                resolve: context => userFacade.GetByUserRoleId(userRoleFacade.GetByName("Teacher").Id));
+                resolve: context => userFacade.GetByUserRoleId(userRoleFacade.GetByName("Преподаватель").Id));
 
 
             Field<ListGraphType<UserType>>("studentsByGroupId",
@@ -263,6 +262,19 @@ namespace University.Queries {
                     return userMarkFacade.GetByGroupSubjectAndIssueDate(groupSubjectId, leftDate, rightDate);
                 }
             );
+            
+            Field<ListGraphType<UserMarkType>>("studentAttendance",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "groupSubjectId"},
+                            new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "studentId"}
+                    ),
+                resolve: context => {
+                    var groupSubjectId = context.GetArgument<int>("groupSubjectId");
+                    var studentId = context.GetArgument<int>("studentId");
+                    
+                    return userMarkFacade.GetByGroupSubjectAndStudentId(groupSubjectId, studentId);
+                }
+            );
         }
 
         private void AddUserRoleQueries(UserRoleFacade userRoleFacade) {
@@ -316,6 +328,16 @@ namespace University.Queries {
                     var login = context.GetArgument<String>("login");
                     var password = context.GetArgument<String>("password");
                     return userFacade.Login(login, password);
+                }
+            );
+            
+            Field<UserType>("studentLogin",
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<StringGraphType>> {Name = "login"},
+                    new QueryArgument<NonNullGraphType<StringGraphType>> {Name = "password"}),
+                resolve: context => {
+                    var login = context.GetArgument<String>("login");
+                    var password = context.GetArgument<String>("password");
+                    return userFacade.Login(login, password, false);
                 }
             );
         }
